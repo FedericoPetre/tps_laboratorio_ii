@@ -16,3 +16,6 @@ C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP1\MiCalculadora\obj\Debug\net
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP1\MiCalculadora\obj\Debug\net5.0-windows\MiCalculadora.pdb
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP1\MiCalculadora\obj\Debug\net5.0-windows\MiCalculadora.genruntimeconfig.cache
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP1\MiCalculadora\obj\Debug\net5.0-windows\MiCalculadora.FormCalculadora.resources
+C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP1\MiCalculadora\bin\Debug\net5.0-windows\Entidades.dll
+C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP1\MiCalculadora\bin\Debug\net5.0-windows\Entidades.pdb
+C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP1\MiCalculadora\obj\Debug\net5.0-windows\MiCalculadora.csproj.CopyComplete

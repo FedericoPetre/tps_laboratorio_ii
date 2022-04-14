@@ -44,7 +44,7 @@ namespace MiCalculadora
             // txtNumero1
             // 
             this.txtNumero1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNumero1.Location = new System.Drawing.Point(30, 60);
+            this.txtNumero1.Location = new System.Drawing.Point(30, 73);
             this.txtNumero1.Name = "txtNumero1";
             this.txtNumero1.Size = new System.Drawing.Size(129, 34);
             this.txtNumero1.TabIndex = 0;
@@ -52,7 +52,7 @@ namespace MiCalculadora
             // txtNumero2
             // 
             this.txtNumero2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNumero2.Location = new System.Drawing.Point(300, 60);
+            this.txtNumero2.Location = new System.Drawing.Point(300, 73);
             this.txtNumero2.Name = "txtNumero2";
             this.txtNumero2.Size = new System.Drawing.Size(129, 34);
             this.txtNumero2.TabIndex = 2;
@@ -61,7 +61,7 @@ namespace MiCalculadora
             // 
             this.cmbOperador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOperador.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbOperador.Location = new System.Drawing.Point(191, 60);
+            this.cmbOperador.Location = new System.Drawing.Point(190, 71);
             this.cmbOperador.Name = "cmbOperador";
             this.cmbOperador.Size = new System.Drawing.Size(82, 36);
             this.cmbOperador.TabIndex = 1;
@@ -69,12 +69,12 @@ namespace MiCalculadora
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
-            this.lblResultado.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblResultado.Location = new System.Drawing.Point(375, 29);
+            this.lblResultado.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblResultado.Location = new System.Drawing.Point(300, 12);
             this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(54, 28);
+            this.lblResultado.Size = new System.Drawing.Size(34, 41);
             this.lblResultado.TabIndex = 9;
-            this.lblResultado.Text = "label";
+            this.lblResultado.Text = "0";
             this.lblResultado.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // btnOperar
@@ -86,6 +86,7 @@ namespace MiCalculadora
             this.btnOperar.TabIndex = 3;
             this.btnOperar.Text = "Operar";
             this.btnOperar.UseVisualStyleBackColor = true;
+            this.btnOperar.Click += new System.EventHandler(this.btnOperar_Click);
             // 
             // btnCerrar
             // 
@@ -118,6 +119,7 @@ namespace MiCalculadora
             this.btnConvertirABinario.TabIndex = 6;
             this.btnConvertirABinario.Text = "Convertir a Binario";
             this.btnConvertirABinario.UseVisualStyleBackColor = true;
+            this.btnConvertirABinario.Click += new System.EventHandler(this.btnConvertirABinario_Click);
             // 
             // btnConvertirADecimal
             // 
@@ -128,21 +130,23 @@ namespace MiCalculadora
             this.btnConvertirADecimal.TabIndex = 7;
             this.btnConvertirADecimal.Text = "Convertir a Decimal";
             this.btnConvertirADecimal.UseVisualStyleBackColor = true;
+            this.btnConvertirADecimal.Click += new System.EventHandler(this.btnConvertirADecimal_Click);
             // 
             // lstOperaciones
             // 
+            this.lstOperaciones.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lstOperaciones.FormattingEnabled = true;
-            this.lstOperaciones.ItemHeight = 15;
+            this.lstOperaciones.ItemHeight = 25;
             this.lstOperaciones.Location = new System.Drawing.Point(448, 12);
             this.lstOperaciones.Name = "lstOperaciones";
-            this.lstOperaciones.Size = new System.Drawing.Size(213, 244);
+            this.lstOperaciones.Size = new System.Drawing.Size(267, 229);
             this.lstOperaciones.TabIndex = 8;
             // 
             // FormCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 275);
+            this.ClientSize = new System.Drawing.Size(727, 258);
             this.Controls.Add(this.lstOperaciones);
             this.Controls.Add(this.btnConvertirADecimal);
             this.Controls.Add(this.btnConvertirABinario);

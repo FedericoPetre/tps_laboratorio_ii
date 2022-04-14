@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entidades;
 
 namespace MiCalculadora
 {
@@ -54,11 +55,60 @@ namespace MiCalculadora
             this.cmbOperador.Items.Add("*");
         }
 
-        private double Operar(string numero1, string numero2, string operando)
+        private static double Operar(string numero1, string numero2, string operando)
         {
             double resultado=0;
 
+           char operandoChar = char.Parse(operando);
+            
+            Operando num1 = new Operando();
+            Operando num2 = new Operando();
+
+            num1.Numero = numero1;
+            num2.Numero = numero2;
+
+
+            resultado = Calculadora.Operar(num1, num2, operandoChar);            
+
             return resultado;
+        }
+
+        private void btnOperar_Click(object sender, EventArgs e)
+        {
+            
+            if (this.cmbOperador.SelectedIndex == -1)
+            {
+                this.cmbOperador.SelectedIndex = 0;
+            }
+
+            if (string.IsNullOrEmpty(this.txtNumero1.Text))
+            {
+                this.txtNumero1.Text = "0";
+            }
+
+            if (string.IsNullOrEmpty(this.txtNumero2.Text))
+            {
+                this.txtNumero2.Text = "0";
+            }
+
+            double resultado = Operar(this.txtNumero1.Text, this.txtNumero2.Text, this.cmbOperador.Text);
+            string resultadoString = resultado.ToString();
+            this.lblResultado.Text = resultadoString;
+            this.lstOperaciones.Items.Add($"{this.txtNumero1.Text} {this.cmbOperador.Text} {this.txtNumero2.Text} = {resultadoString}");            
+        }
+
+        private void btnConvertirABinario_Click(object sender, EventArgs e)
+        {
+            string resultado = Operando.DecimalBinario(this.lblResultado.Text);
+            this.lstOperaciones.Items.Add($"{resultado}");
+            this.lblResultado.Text = resultado;
+        }
+
+        private void btnConvertirADecimal_Click(object sender, EventArgs e)
+        {
+            string resultado = Operando.BinarioDecimal(this.lblResultado.Text);
+            this.lstOperaciones.Items.Add($"{resultado}");
+            this.lblResultado.Text = resultado;
         }
     }
 }
