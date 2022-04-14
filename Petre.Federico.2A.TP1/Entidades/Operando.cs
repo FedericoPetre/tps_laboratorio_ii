@@ -19,13 +19,22 @@ namespace Entidades
         /// </summary>
         /// <param name="binario"></param>
         /// <returns></returns>
-        public string BinarioDecimal(string binario) // se puede convertir -1000 en decimal?
+        public string BinarioDecimal(string binario)
         {
-            string stringRetorno = "Valor invalido";
+            string stringRetorno = "Valor inválido";
             double numeroDecimal = 0;
             int longitudBinario = binario.Length;
+            double numeroBinario;
+            bool convertirADouble = double.TryParse(binario, out numeroBinario);
+            string stringBinario ="";
 
-            if (EsBinario(binario))
+            if (convertirADouble)
+            {
+                numeroBinario = Math.Abs(numeroBinario);
+                stringBinario = numeroBinario.ToString();
+            }
+
+            if (EsBinario(stringBinario))
             {
                 foreach (char caracter in binario)
                 {
@@ -36,7 +45,7 @@ namespace Entidades
                     }
                 }
 
-                stringRetorno = numeroDecimal.ToString();                
+                stringRetorno = numeroDecimal.ToString();
             }
 
             return stringRetorno;
@@ -94,11 +103,11 @@ namespace Entidades
 
             if (boolConversor)
             {
-                stringRetorno = DecimalBinario(doubleNumero);            
+                stringRetorno = DecimalBinario(doubleNumero);
             }
 
             return stringRetorno;
-        
+
         }
 
         /// <summary>
@@ -119,7 +128,7 @@ namespace Entidades
                 }
             }
 
-            return flagEsBinario;        
+            return flagEsBinario;
         }
 
         public Operando()
@@ -134,7 +143,7 @@ namespace Entidades
 
         public Operando(string strNumero) : this(double.Parse(strNumero))
         {
-            
+
         }
 
         public static double operator -(Operando n1, Operando n2)
@@ -156,7 +165,7 @@ namespace Entidades
                 resultado = double.MinValue;
             }
             else
-            { 
+            {
                 resultado = n1.numero / n2.numero;
             }
 
@@ -183,4 +192,5 @@ namespace Entidades
 
 
     }
+
 }

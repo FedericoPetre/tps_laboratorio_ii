@@ -17,40 +17,48 @@ namespace MiCalculadora
             InitializeComponent();
         }
 
-        private void FormCalculadora_Load(object sender, EventArgs e)
+        private void FormCalculadora_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.cmbOperador.Items.Add("+");
-            this.cmbOperador.Items.Add("-");
-            this.cmbOperador.Items.Add("/");
-            this.cmbOperador.Items.Add("*");
+            DialogResult respuesta = MessageBox.Show("¿Seguro que desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            if (respuesta == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta = MessageBox.Show("¿Seguro que desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (respuesta == DialogResult.Yes)
-            {
-                this.Close();
-            }
-
+            this.Close();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            this.txtNumero1.Text = "";
-            this.txtNumero2.Text = "";
-            this.lblResultado.Text = "";
-            this.cmbOperador.SelectedIndex = -1;
+            Limpiar();
         }
 
-        private void btnLimpiar_Click_1(object sender, EventArgs e)
+        private void Limpiar()
         {
             this.txtNumero1.Text = "";
             this.txtNumero2.Text = "";
-            this.lblResultado.Text = "";
             this.cmbOperador.SelectedIndex = -1;
+            this.lblResultado.Text = "";
+        }
+
+        private void FormCalculadora_Load(object sender, EventArgs e)
+        {
+            Limpiar();
+            this.cmbOperador.Items.Add("+");
+            this.cmbOperador.Items.Add("-");
+            this.cmbOperador.Items.Add("/");
+            this.cmbOperador.Items.Add("*");
+        }
+
+        private double Operar(string numero1, string numero2, string operando)
+        {
+            double resultado=0;
+
+            return resultado;
         }
     }
 }

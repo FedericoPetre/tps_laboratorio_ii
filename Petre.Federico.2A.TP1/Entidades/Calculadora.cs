@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Calculadora
+    class Calculadora
     {
         public double Operar(Operando num1, Operando num2, char operador)
         {
-            double resultado=0;
+            double resultado = 0;
             char operandoValidado = ValidarOperador(operador);
 
             switch (operandoValidado)
@@ -23,7 +23,7 @@ namespace Entidades
                     break;
                 case '*':
                     resultado = num1 * num2;
-                    break; 
+                    break;
                 case '/':
                     resultado = num1 / num2;
                     break;
@@ -42,14 +42,12 @@ namespace Entidades
                 case '-':
                 case '*':
                 case '/':
-                operadorDeRetorno = operador;
-                    break;            
+                    operadorDeRetorno = operador;
+                    break;
             }
 
-            return operadorDeRetorno;        
+            return operadorDeRetorno;
         }
-
-
 
     }
 }
