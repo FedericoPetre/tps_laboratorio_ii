@@ -110,14 +110,18 @@ namespace MiCalculadora
 
         private void btnConvertirABinario_Click(object sender, EventArgs e)
         {
-            string resultado = Operando.DecimalBinario(this.lblResultado.Text);
+            Operando nuevoOperando = new Operando();
+
+            string resultado = nuevoOperando.DecimalBinario(this.lblResultado.Text);
             this.lstOperaciones.Items.Add($"{resultado}");
             this.lblResultado.Text = resultado;
         }
 
         private void btnConvertirADecimal_Click(object sender, EventArgs e)
         {
-            string resultado = Operando.BinarioDecimal(this.lblResultado.Text);
+            Operando nuevoOperando = new Operando();
+
+            string resultado = nuevoOperando.BinarioDecimal(this.lblResultado.Text);
             this.lstOperaciones.Items.Add($"{resultado}");
             this.lblResultado.Text = resultado;
         }

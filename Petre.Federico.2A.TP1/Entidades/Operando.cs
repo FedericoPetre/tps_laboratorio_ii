@@ -19,11 +19,11 @@ namespace Entidades
         /// </summary>
         /// <param name="binario"></param>
         /// <returns></returns>
-        public static string BinarioDecimal(string binario)
+        public string BinarioDecimal(string binario)
         {
             string stringRetorno = "Valor inválido";
             double numeroDecimal = 0;
-            int longitudBinario = binario.Length;
+            int longitudBinario;
             double numeroBinario;
             bool convertirADouble = double.TryParse(binario, out numeroBinario);
             string stringBinario ="";
@@ -37,6 +37,7 @@ namespace Entidades
 
             if (EsBinario(stringBinario))
             {
+                longitudBinario = stringBinario.Length;
                 foreach (char caracter in stringBinario)
                 {
                     longitudBinario--;
@@ -57,40 +58,39 @@ namespace Entidades
         /// </summary>
         /// <param name="numero"></param>
         /// <returns></returns>
-        public static string DecimalBinario(double numero)
+        public string DecimalBinario(double numero)
         {
             int potenciaMaximaDeDos = 0;
-            double valorAbsoluto = Math.Abs(numero);
-            double valorEntero = Math.Truncate(valorAbsoluto);
             string stringBinario = "";
             double coeficiente;
             char digitoAConcatenar;
+            double numeroAConvertir = numero;
 
-            if (valorEntero == 0)
+            if (numeroAConvertir == 0)
             {
                 stringBinario = "0";
             }
 
-            while (valorEntero >= Math.Pow(2, potenciaMaximaDeDos))
+            while (numeroAConvertir >= Math.Pow(2, potenciaMaximaDeDos))
             {
                 potenciaMaximaDeDos++;
             }
 
             for (int i = 0; i < potenciaMaximaDeDos; i++)
             {
-                if (valorEntero % 2 == 0)
+                if (numeroAConvertir % 2 == 0)
                 {
-                    coeficiente = valorEntero / 2;
+                    coeficiente = numeroAConvertir / 2;
                     digitoAConcatenar = '0';
                 }
                 else
                 {
-                    coeficiente = (valorEntero - 1) / 2;
+                    coeficiente = (numeroAConvertir - 1) / 2;
                     digitoAConcatenar = '1';
                 }
 
                 stringBinario = digitoAConcatenar + stringBinario;
-                valorEntero = coeficiente;
+                numeroAConvertir = coeficiente;
             }
 
             return stringBinario;
@@ -102,15 +102,18 @@ namespace Entidades
         /// </summary>
         /// <param name="numero"></param>
         /// <returns></returns>
-        public static string DecimalBinario(string numero)
+        public string DecimalBinario(string numero)
         {
             string stringRetorno = "Valor invalido";
+            double valorAbsolutoYEntero;
             double doubleNumero;
             bool boolConversor = double.TryParse(numero, out doubleNumero);
 
             if (boolConversor)
             {
-                stringRetorno = DecimalBinario(doubleNumero);
+                valorAbsolutoYEntero = Math.Abs(doubleNumero);
+                valorAbsolutoYEntero = Math.Truncate(valorAbsolutoYEntero);
+                stringRetorno = this.DecimalBinario(valorAbsolutoYEntero);
             }
 
             return stringRetorno;
