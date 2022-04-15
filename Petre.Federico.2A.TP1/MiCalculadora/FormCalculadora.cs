@@ -91,6 +91,17 @@ namespace MiCalculadora
                 this.txtNumero2.Text = "0";
             }
 
+
+            if (this.txtNumero1.Text.Contains('.'))
+            {
+                this.txtNumero1.Text = this.txtNumero1.Text.Replace('.', ',');
+            }
+
+            if (this.txtNumero2.Text.Contains('.'))
+            {
+                this.txtNumero2.Text = this.txtNumero2.Text.Replace('.', ',');
+            }
+
             double resultado = Operar(this.txtNumero1.Text, this.txtNumero2.Text, this.cmbOperador.Text);
             string resultadoString = resultado.ToString();
             this.lblResultado.Text = resultadoString;
