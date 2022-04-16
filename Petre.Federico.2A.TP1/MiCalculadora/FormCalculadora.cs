@@ -89,7 +89,7 @@ namespace MiCalculadora
         {
             double resultado=0;
 
-           char operandoChar = char.Parse(operando);
+            char operandoChar = char.Parse(operando);
             
             Operando num1 = new Operando();
             Operando num2 = new Operando();
@@ -104,7 +104,7 @@ namespace MiCalculadora
         }
 
         /// <summary>
-        /// Al hacer click en operar, se invoca al método Operar del Form, validando que: Si el usuario no eligio opcion en el comboBox, sea la opcio del + por defecto. Los txtBoxs reemplazan la , por el . para no confundir al usuario en decimales. Y si se ingresó texto, sea reemplazado por 0.
+        /// Al hacer click en operar, se invoca al método Operar del Form, validando que: Si el usuario no eligio opcion en el comboBox, sea la opcion del + por defecto. Los txtBoxs reemplazan el . por la , para no confundir al usuario en decimales. Y si se ingresó texto, sea reemplazado por 0.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
