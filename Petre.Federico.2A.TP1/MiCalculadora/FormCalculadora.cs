@@ -18,6 +18,11 @@ namespace MiCalculadora
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Evento FormClosing, al intentar cerrar el formulario, aparecera un MessageBox : Seguro que desea salir?, con opciones SI y NO.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormCalculadora_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult respuesta = MessageBox.Show("¿Seguro que desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -28,16 +33,29 @@ namespace MiCalculadora
             }
         }
 
+        /// <summary>
+        /// Al hacer click en el boton cerrar, se ejecuta el evento FormClosing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Al hacer click en el botón limpiar, se ejecuta el método limpiar, el cual limpia los textBoxs, comboBox y label
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
         }
 
+        /// <summary>
+        /// Limpia el contenido de los textBoxs y label; y el comboBox queda en opción sin seleccionar
+        /// </summary>
         private void Limpiar()
         {
             this.txtNumero1.Text = "";
@@ -46,6 +64,11 @@ namespace MiCalculadora
             this.lblResultado.Text = "";
         }
 
+        /// <summary>
+        /// Evento Load del Formulario, se crea, se limpia y agrega opciones al comboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormCalculadora_Load(object sender, EventArgs e)
         {
             Limpiar();
@@ -55,6 +78,13 @@ namespace MiCalculadora
             this.cmbOperador.Items.Add("*");
         }
 
+        /// <summary>
+        /// Método operar del Forms. Se invoca al método Operar de Calculadora.
+        /// </summary>
+        /// <param name="numero1"></param>
+        /// <param name="numero2"></param>
+        /// <param name="operando"></param>
+        /// <returns></returns>
         private static double Operar(string numero1, string numero2, string operando)
         {
             double resultado=0;
@@ -73,6 +103,11 @@ namespace MiCalculadora
             return resultado;
         }
 
+        /// <summary>
+        /// Al hacer click en operar, se invoca al método Operar del Form, validando que: Si el usuario no eligio opcion en el comboBox, sea la opcio del + por defecto. Los txtBoxs reemplazan la , por el . para no confundir al usuario en decimales. Y si se ingresó texto, sea reemplazado por 0.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOperar_Click(object sender, EventArgs e)
         {
             
@@ -108,6 +143,11 @@ namespace MiCalculadora
             this.lstOperaciones.Items.Add($"{this.txtNumero1.Text} {this.cmbOperador.Text} {this.txtNumero2.Text} = {resultadoString}");            
         }
 
+        /// <summary>
+        /// Al hacer click en ConvertirABinario, se invoca al método DecimalBinario de Operando para realizar la conversión del último resultado guardado en el label
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConvertirABinario_Click(object sender, EventArgs e)
         {
             Operando nuevoOperando = new Operando();
@@ -117,6 +157,11 @@ namespace MiCalculadora
             this.lblResultado.Text = resultado;
         }
 
+        /// <summary>
+        /// Al hacer click en el botón ConvertirADecimal, se invoca al método DecimalBinario de Operando para realizar la conversión del último resultado guardado en el label.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConvertirADecimal_Click(object sender, EventArgs e)
         {
             Operando nuevoOperando = new Operando();

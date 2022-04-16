@@ -64,7 +64,7 @@ namespace Entidades
             string stringBinario = "";
             double coeficiente;
             char digitoAConcatenar;
-            double numeroAConvertir = numero;
+            double numeroAConvertir = Math.Abs(numero);
 
             if (numeroAConvertir == 0)
             {
@@ -141,31 +141,60 @@ namespace Entidades
             return flagEsBinario;
         }
 
+        /// <summary>
+        ///  Constructor Operando, inicializa el valor de operando en 0
+        /// </summary>
         public Operando()
         {
             this.numero = 0;
         }
 
+        /// <summary>
+        ///  Constructor Operando, asigna el valor del double recibido como parámetro al nuevo Operando
+        /// </summary>
+        /// <param name="numero"></param>
         public Operando(double numero)
         {
             this.numero = numero;
         }
 
+        /// <summary>
+        /// Constructor Operando, asigna, si es posible, el valor transformado del string ingresado por parámetro al nuevo Operando
+        /// </summary>
+        /// <param name="strNumero"></param>
         public Operando(string strNumero) : this(double.Parse(strNumero))
         {
 
         }
 
+        /// <summary>
+        /// Sobrecarga del operador - con Operandos
+        /// </summary>
+        /// <param name="n1"></param>
+        /// <param name="n2"></param>
+        /// <returns></returns>
         public static double operator -(Operando n1, Operando n2)
         {
             return n1.numero - n2.numero;
         }
 
+        /// <summary>
+        /// Sobrecarga del operador * con Operandos
+        /// </summary>
+        /// <param name="n1"></param>
+        /// <param name="n2"></param>
+        /// <returns></returns>
         public static double operator *(Operando n1, Operando n2)
         {
             return n1.numero * n2.numero;
         }
 
+        /// <summary>
+        /// Sobrecaraga del operador / con Operandos
+        /// </summary>
+        /// <param name="n1"></param>
+        /// <param name="n2"></param>
+        /// <returns></returns>
         public static double operator /(Operando n1, Operando n2)
         {
             double resultado;
@@ -182,11 +211,22 @@ namespace Entidades
             return resultado;
         }
 
+        /// <summary>
+        /// Sobrecarga del operador + con Operandos
+        /// </summary>
+        /// <param name="n1"></param>
+        /// <param name="n2"></param>
+        /// <returns></returns>
         public static double operator +(Operando n1, Operando n2)
         {
             return n1.numero + n2.numero;
         }
 
+        /// <summary>
+        /// Valida que el string ingresado por parámetro sea un número y en ese caso lo retorna convertido en double. Caso contrario retona 0.
+        /// </summary>
+        /// <param name="strNumero"></param>
+        /// <returns></returns>
         private static double ValidarOperando(string strNumero)
         {
             double numeroConvertido;
