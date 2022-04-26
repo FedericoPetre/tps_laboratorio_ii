@@ -15,6 +15,12 @@ namespace Entidades
         private ConsoleColor color;
         private EMarca marca;
 
+        /// <summary>
+        /// Constructor de vehiculo, asigna los campos pasados por parámetro
+        /// </summary>
+        /// <param name="chasis"></param>
+        /// <param name="color"></param>
+        /// <param name="marca"></param>
         public Vehiculo(string chasis, ConsoleColor color, EMarca marca)
         {
             this.chasis = chasis;
@@ -33,7 +39,10 @@ namespace Entidades
             }
         }
 
-
+        /// <summary>
+        /// Sobrecarga de operador (string). Retorna un string con todos los datos del vehiculo
+        /// </summary>
+        /// <param name="p"></param>
         public static explicit operator string(Vehiculo p)
         {
             StringBuilder sb = new StringBuilder();
