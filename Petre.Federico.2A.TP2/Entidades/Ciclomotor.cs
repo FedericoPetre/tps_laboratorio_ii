@@ -31,6 +31,10 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Retorna un string con todos los datos del ciclomotor
+        /// </summary>
+        /// <returns></returns>
         public override string Mostrar()
         {
             StringBuilder sb = new StringBuilder();

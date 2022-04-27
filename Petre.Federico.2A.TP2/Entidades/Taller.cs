@@ -73,8 +73,6 @@ namespace Entidades
         }
         #endregion
 
-
-
         #region "Operadores"
         /// <summary>
         /// Agregará un elemento a la lista
@@ -84,13 +82,22 @@ namespace Entidades
         /// <returns></returns>
         public static Taller operator +(Taller taller, Vehiculo vehiculo)
         {
-            foreach (Vehiculo v in taller)
+            bool flagEstaEnElTaller = false;
+
+            foreach (Vehiculo v in taller.vehiculos)
             {
                 if (v == vehiculo)
-                    return taller;
+                {
+                    flagEstaEnElTaller = true;
+                    break;
+                }
+                    
             }
 
-            taller.vehiculos.Add(vehiculo);
+            if (!flagEstaEnElTaller)
+            {
+                taller.vehiculos.Add(vehiculo);
+            }            
             return taller;
         }
         /// <summary>
@@ -101,10 +108,11 @@ namespace Entidades
         /// <returns></returns>
         public static Taller operator -(Taller taller, Vehiculo vehiculo)
         {
-            foreach (Vehiculo v in taller)
+            foreach (Vehiculo v in taller.vehiculos)
             {
                 if (v == vehiculo)
                 {
+                    taller.vehiculos.Remove(vehiculo);
                     break;
                 }
             }

@@ -30,15 +30,17 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Retrona un string con todos los datos del Suv
+        /// </summary>
+        /// <returns></returns>
         public override string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("SUV");
             sb.AppendLine(base.Mostrar());
-            sb.AppendLine($"TAMAÑO : {this.Tamanio.ToString()}");
-
-            Enum.GetName(typeof(ETamanio), (int)this.Tamanio);
+            sb.AppendLine($"TAMAÑO : {this.Tamanio.ToString()}");           
             sb.AppendLine("");
             sb.AppendLine("---------------------");
 
