@@ -40,6 +40,15 @@ namespace Entidades
         }
 
         /// <summary>
+        /// Publica todos los datos del Vehiculo.
+        /// </summary>
+        /// <returns></returns>
+        public virtual string Mostrar()
+        {
+            return (string)this;
+        }
+
+        /// <summary>
         /// Sobrecarga de operador (string). Retorna un string con todos los datos del vehiculo
         /// </summary>
         /// <param name="p"></param>
@@ -53,15 +62,6 @@ namespace Entidades
             sb.AppendLine("---------------------");
 
             return sb.ToString();
-        }
-
-        /// <summary>
-        /// Publica todos los datos del Vehiculo.
-        /// </summary>
-        /// <returns></returns>
-        public virtual string Mostrar()
-        {
-            return (string)this;
         }
 
         /// <summary>

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Drawing;
 
 namespace Entidades
@@ -11,32 +10,6 @@ namespace Entidades
     public class Sedan : Vehiculo
     {
         private ETipo tipo;
-
-        /// <summary>
-        /// Sedan son 'Mediano'
-        /// </summary>
-        protected override ETamanio Tamanio
-        {
-            get
-            {
-                return ETamanio.Mediano;
-            }
-        }
-
-
-        public override sealed string Mostrar()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine("SEDAN");
-            sb.AppendLine(base.Mostrar());
-            sb.AppendLine($"TAMAÑO : {this.Tamanio.ToString()}");
-            sb.AppendLine("TIPO : " + this.tipo.ToString());
-            sb.AppendLine("");
-            sb.AppendLine("---------------------");
-
-            return sb.ToString();
-        }
 
         /// <summary>
         /// Constructor Sedan, asigna los valores pasados por parámetro. Por defecto, TIPO será CuatroPuertas
@@ -61,6 +34,31 @@ namespace Entidades
             : this(marca, chasis, color)
         {
             this.tipo = tipo;
+        }
+
+        /// <summary>
+        /// Sedan son 'Mediano'
+        /// </summary>
+        protected override ETamanio Tamanio
+        {
+            get
+            {
+                return ETamanio.Mediano;
+            }
+        }
+
+        public override sealed string Mostrar()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("SEDAN");
+            sb.AppendLine(base.Mostrar());
+            sb.AppendLine($"TAMAÑO : {this.Tamanio.ToString()}");
+            sb.AppendLine("TIPO : " + this.tipo.ToString());
+            sb.AppendLine("");
+            sb.AppendLine("---------------------");
+
+            return sb.ToString();
         }
 
         public enum ETipo 

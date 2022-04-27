@@ -9,17 +9,6 @@ namespace Entidades
     public class Ciclomotor : Vehiculo
     {
         /// <summary>
-        /// Ciclomotor son 'Chico'
-        /// </summary>
-        protected override ETamanio Tamanio
-        {
-            get
-            {
-                return ETamanio.Chico;
-            }
-        }
-
-        /// <summary>
         /// Constructor, asigna los parámetros a los atributos del objeto
         /// </summary>
         /// <param name="marca"></param>
@@ -29,6 +18,17 @@ namespace Entidades
             : base(chasis, color, marca)
         {
 
+        }
+
+        /// <summary>
+        /// Ciclomotor son 'Chico'
+        /// </summary>
+        protected override ETamanio Tamanio
+        {
+            get
+            {
+                return ETamanio.Chico;
+            }
         }
 
         public override string Mostrar()

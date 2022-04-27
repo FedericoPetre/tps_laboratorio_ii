@@ -9,6 +9,17 @@ namespace Entidades
     public class Suv : Vehiculo
     {
         /// <summary>
+        /// Constructor de Suv. Asigna los campos pasados por parámetro
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="chasis"></param>
+        /// <param name="color"></param>
+        public Suv(EMarca marca, string chasis, ConsoleColor color)
+            : base(chasis, color, marca)
+        {
+        }
+
+        /// <summary>
         /// SUV son 'Grande'
         /// </summary>
         protected override ETamanio Tamanio
@@ -33,19 +44,6 @@ namespace Entidades
 
             return sb.ToString();
         }
-
-        /// <summary>
-        /// Constructor de Suv. Asigna los campos pasados por parámetro
-        /// </summary>
-        /// <param name="marca"></param>
-        /// <param name="chasis"></param>
-        /// <param name="color"></param>
-        public Suv(EMarca marca, string chasis, ConsoleColor color)
-            : base(chasis, color, marca)
-        {
-        }
-
-
 
     }
 }

@@ -9,14 +9,10 @@ namespace Entidades
     /// <summary>
     /// No podrá tener clases heredadas.
     /// </summary>
-    public class Taller
+    public sealed class Taller
     {
-        List<Vehiculo> vehiculos;
-        int espacioDisponible;
-        public enum ETipo
-        {
-            Moto, Automovil, Camioneta, Todos
-        }
+        private int espacioDisponible;
+        private List<Vehiculo> vehiculos;
 
         #region "Constructores"
         private Taller()
@@ -29,19 +25,7 @@ namespace Entidades
         }
         #endregion
 
-        #region "Sobrecargas"
-        /// <summary>
-        /// Muestro el estacionamiento y TODOS los vehículos
-        /// </summary>
-        /// <returns></returns>
-        public string ToString()
-        {
-            return Taller.Listar(this, ETipo.Todos);
-        }
-        #endregion
-
         #region "Métodos"
-
         /// <summary>
         /// Expone los datos del elemento y su lista (incluidas sus herencias)
         /// SOLO del tipo requerido
@@ -59,14 +43,14 @@ namespace Entidades
             {
                 switch (tipo)
                 {
-                    case ETipo.Camioneta:
-                        sb.AppendLine(v.Mostrar());
+                    case ETipo.Ciclomotor:
+                        sb.AppendLine(((Ciclomotor) v).Mostrar());
                         break;
-                    case ETipo.Moto:
-                        sb.AppendLine(v.Mostrar());
+                    case ETipo.Sedan:
+                        sb.AppendLine(((Sedan) v).Mostrar());
                         break;
-                    case ETipo.Automovil:
-                        sb.AppendLine(v.Mostrar());
+                    case ETipo.SUV:
+                        sb.AppendLine(((Suv) v).Mostrar());
                         break;
                     default:
                         sb.AppendLine(v.Mostrar());
@@ -74,9 +58,22 @@ namespace Entidades
                 }
             }
 
-            return sb;
+            return sb.ToString();
         }
         #endregion
+
+        #region "Sobrecargas"
+        /// <summary>
+        /// Muestro el estacionamiento y TODOS los vehículos
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Listar(this, ETipo.Todos);
+        }
+        #endregion
+
+
 
         #region "Operadores"
         /// <summary>
@@ -115,5 +112,10 @@ namespace Entidades
             return taller;
         }
         #endregion
+
+        public enum ETipo
+        {
+            Ciclomotor, Sedan, SUV, Todos
+        }
     }
 }
