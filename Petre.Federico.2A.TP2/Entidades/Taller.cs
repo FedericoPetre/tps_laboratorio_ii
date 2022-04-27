@@ -19,7 +19,7 @@ namespace Entidades
         {
             this.vehiculos = new List<Vehiculo>();
         }
-        public Taller(int espacioDisponible)
+        public Taller(int espacioDisponible) : this()
         {
             this.espacioDisponible = espacioDisponible;
         }
@@ -44,13 +44,22 @@ namespace Entidades
                 switch (tipo)
                 {
                     case ETipo.Ciclomotor:
-                        sb.AppendLine(((Ciclomotor) v).Mostrar());
+                        if (v is Ciclomotor)
+                        {
+                            sb.AppendLine(((Ciclomotor)v).Mostrar());
+                        }                     
                         break;
                     case ETipo.Sedan:
-                        sb.AppendLine(((Sedan) v).Mostrar());
+                        if (v is Sedan)
+                        {
+                            sb.AppendLine(((Sedan)v).Mostrar());
+                        }
                         break;
                     case ETipo.SUV:
-                        sb.AppendLine(((Suv) v).Mostrar());
+                        if (v is Suv)
+                        {
+                            sb.AppendLine(((Suv) v).Mostrar());
+                        }
                         break;
                     default:
                         sb.AppendLine(v.Mostrar());
@@ -94,7 +103,7 @@ namespace Entidades
                     
             }
 
-            if (!flagEstaEnElTaller)
+            if (!flagEstaEnElTaller && taller.vehiculos.Count < taller.espacioDisponible)
             {
                 taller.vehiculos.Add(vehiculo);
             }            
@@ -108,13 +117,19 @@ namespace Entidades
         /// <returns></returns>
         public static Taller operator -(Taller taller, Vehiculo vehiculo)
         {
+            bool flagEstaEnElTaller = false;
             foreach (Vehiculo v in taller.vehiculos)
             {
                 if (v == vehiculo)
                 {
-                    taller.vehiculos.Remove(vehiculo);
-                    break;
+                    flagEstaEnElTaller = true;
+                    
                 }
+            }
+
+            if (flagEstaEnElTaller && taller.vehiculos.Count > 0)
+            {
+                taller.vehiculos.Remove(vehiculo);
             }
 
             return taller;
