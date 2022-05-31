@@ -92,6 +92,10 @@ namespace EntidadesTP3
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Retorna todos los datos del cliente
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return this.MostrarCliente();
@@ -141,14 +145,14 @@ namespace EntidadesTP3
 
 
         /// <summary>
-        /// Dos clientes serán iguales si comparten nombre, edad y dni
+        /// Dos clientes serán iguales si comparten nombre, edad, dni y telefono
         /// </summary>
         /// <param name="c1"></param>
         /// <param name="c2"></param>
         /// <returns></returns>
         public static bool operator ==(Cliente c1, Cliente c2)
         {
-            return c1.Nombre == c2.Nombre && c1.Edad == c2.Edad && c1.Dni == c2.Dni;
+            return c1.Nombre == c2.Nombre && c1.Edad == c2.Edad && c1.Dni == c2.Dni && c1.Telefono == c2.Telefono;
         }
 
         public static bool operator !=(Cliente c1, Cliente c2)

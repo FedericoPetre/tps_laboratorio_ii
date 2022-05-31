@@ -13,7 +13,14 @@ namespace EntidadesTP3
        public static Dictionary<EServicioPeluqueria, decimal> listadoDePrecios;
 
        public string TipoServicio { get { return this.tipoDeServicio.ToString(); } }
+        
+        /// <summary>
+        /// Para retornar el precio por el servicio del cliente actual (instancia)
+        /// </summary>
+        /// <exception cref="PrecioNoEncontradoException">En caso de que no haya sido cargado el precio del tipo de servicio</exception>
+        /// <exception cref="Exception">En caso de ocurrir un error desconocido</exception>
        public decimal PrecioServicio { get { return this.ObtenerPrecio(this.tipoDeServicio); } }
+       public Cliente ClienteAtendido { get { return this.clienteAtendido; } }
 
 
         /// <summary>
@@ -200,21 +207,62 @@ namespace EntidadesTP3
         }
 
         /// <summary>
-        /// Retorna el precio del servicio por atender al cliente
+        /// Para cargar los precios del corte, planchado y tintura
+        /// </summary>
+        /// <param name="precioCorte"></param>
+        /// <param name="precioPlanchado"></param>
+        /// <param name="precioTintura"></param>
+        /// <exception cref="PrecioNoValidoException">en caso de que alguno de los precios ingresados sea menor a 0</exception>
+        public void CargarPrecios(decimal precioCorte, decimal precioPlanchado, decimal precioTintura)
+        {
+            this.PrecioCorte = precioCorte;
+            this.PrecioPlanchado = precioPlanchado;
+            this.PrecioTintura = precioTintura;
+        }
+
+        /// <summary>
+        /// Retorna el precio del servicio por atender al cliente, parámetro tipoServicio: 0 -corte, 1-planchado, 2-tintura, 3-corteYplanchado, 4-corteYtintura, 5-planchadoYtintura, 6-todos
         /// </summary>
         /// <param name="cliente"></param>
         /// <param name="tipoServicio"></param>
         /// <returns></returns>
-        public decimal AtenderCliente(Cliente cliente, EServicioPeluqueria tipoServicio)
+        /// <exception cref="PrecioNoEncontradoException">En caso de no encontrarse el precio Cargado</exception>
+        /// <exception cref="Exception">En caso de producise un error desconocido</exception>
+        public decimal AtenderCliente(Cliente cliente, int tipoServicio)
         {
             decimal precio = 0;
+            EServicioPeluqueria tipoDeServicio = EServicioPeluqueria.Corte;
             if (cliente is not null)
             {
                 try 
                 {
                     this.clienteAtendido = cliente;
-                    this.tipoDeServicio = tipoServicio;
-                    precio = this.ObtenerPrecio(tipoServicio);
+                    switch (tipoServicio)
+                    {
+                        case 0:
+                            tipoDeServicio = EServicioPeluqueria.Corte;
+                            break;
+                        case 1:
+                            tipoDeServicio = EServicioPeluqueria.Planchado;
+                            break;
+                        case 2:
+                            tipoDeServicio = EServicioPeluqueria.Tintura;
+                            break;
+                        case 3:
+                            tipoDeServicio = EServicioPeluqueria.CorteYPlanchado;
+                            break;
+                        case 4:
+                            tipoDeServicio = EServicioPeluqueria.CorteYTintura;
+                            break;
+                        case 5:
+                            tipoDeServicio = EServicioPeluqueria.PlanchadoYTintura;
+                            break;
+                        case 6:
+                            tipoDeServicio = EServicioPeluqueria.Todos;
+                            break;
+                    }
+                    this.tipoDeServicio = tipoDeServicio;
+                    precio = this.ObtenerPrecio(tipoDeServicio);
                 }
                 catch (PrecioNoEncontradoException)
                 {

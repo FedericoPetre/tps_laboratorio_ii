@@ -2,7 +2,6 @@ C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\EntidadesTP3\bin\Debug\net5
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\EntidadesTP3\bin\Debug\net5.0\EntidadesTP3.dll
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\EntidadesTP3\bin\Debug\net5.0\ref\EntidadesTP3.dll
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\EntidadesTP3\bin\Debug\net5.0\EntidadesTP3.pdb
-C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\EntidadesTP3\obj\Debug\net5.0\EntidadesTP3.csproj.AssemblyReference.cache
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\EntidadesTP3\obj\Debug\net5.0\EntidadesTP3.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\EntidadesTP3\obj\Debug\net5.0\EntidadesTP3.AssemblyInfoInputs.cache
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\EntidadesTP3\obj\Debug\net5.0\EntidadesTP3.AssemblyInfo.cs

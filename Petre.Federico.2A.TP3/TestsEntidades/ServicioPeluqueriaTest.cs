@@ -46,8 +46,7 @@ namespace TestsEntidades
         {
             ServicioPeluqueria peluqueria = new ServicioPeluqueria();
             Cliente cliente = new Cliente("Juan", 24, 42424422, 1525252525);
-            ServicioPeluqueria.EServicioPeluqueria servicio = ServicioPeluqueria.EServicioPeluqueria.CorteYPlanchado;
-            decimal precio = peluqueria.AtenderCliente(cliente, servicio);           
+            decimal precio = peluqueria.AtenderCliente(cliente, 3);           
         }
 
         [TestMethod]
@@ -55,12 +54,11 @@ namespace TestsEntidades
         {
             ServicioPeluqueria peluqueria = new ServicioPeluqueria();
             Cliente cliente = new Cliente("Juan", 24, 42424422, 1525252525);
-            ServicioPeluqueria.EServicioPeluqueria servicio = ServicioPeluqueria.EServicioPeluqueria.Corte;
             peluqueria.PrecioCorte = 100;
             peluqueria.PrecioPlanchado = 200;
             peluqueria.PrecioTintura = 300;
             decimal expected = 100;
-            decimal actual = peluqueria.AtenderCliente(cliente, servicio);
+            decimal actual = peluqueria.AtenderCliente(cliente, 0);
 
             Assert.AreEqual(expected, actual);
         }
@@ -70,12 +68,11 @@ namespace TestsEntidades
         {
             ServicioPeluqueria peluqueria = new ServicioPeluqueria();
             Cliente cliente = new Cliente("Juan", 24, 42424422, 1525252525);
-            ServicioPeluqueria.EServicioPeluqueria servicio = ServicioPeluqueria.EServicioPeluqueria.Tintura;
             peluqueria.PrecioCorte = 100;
             peluqueria.PrecioPlanchado = 200;
             peluqueria.PrecioTintura = 300;
             decimal expected = 300;
-            decimal actual = peluqueria.AtenderCliente(cliente, servicio);
+            decimal actual = peluqueria.AtenderCliente(cliente, 2);
 
             Assert.AreEqual(expected, actual);
         }
@@ -85,12 +82,11 @@ namespace TestsEntidades
         {
             ServicioPeluqueria peluqueria = new ServicioPeluqueria();
             Cliente cliente = new Cliente("Juan", 24, 42424422, 1525252525);
-            ServicioPeluqueria.EServicioPeluqueria servicio = ServicioPeluqueria.EServicioPeluqueria.Planchado;
             peluqueria.PrecioCorte = 100;
             peluqueria.PrecioPlanchado = 200;
             peluqueria.PrecioTintura = 300;
             decimal expected = 200;
-            decimal actual = peluqueria.AtenderCliente(cliente, servicio);
+            decimal actual = peluqueria.AtenderCliente(cliente, 1);
 
             Assert.AreEqual(expected, actual);
         }
@@ -100,12 +96,11 @@ namespace TestsEntidades
         {
             ServicioPeluqueria peluqueria = new ServicioPeluqueria();
             Cliente cliente = new Cliente("Juan", 24, 42424422, 1525252525);
-            ServicioPeluqueria.EServicioPeluqueria servicio = ServicioPeluqueria.EServicioPeluqueria.CorteYPlanchado;
             peluqueria.PrecioCorte = 100;
             peluqueria.PrecioPlanchado = 200;
             peluqueria.PrecioTintura = 300;
             decimal expected = 300;
-            decimal actual = peluqueria.AtenderCliente(cliente, servicio);
+            decimal actual = peluqueria.AtenderCliente(cliente, 3);
 
             Assert.AreEqual(expected, actual);
         }
@@ -115,12 +110,11 @@ namespace TestsEntidades
         {
             ServicioPeluqueria peluqueria = new ServicioPeluqueria();
             Cliente cliente = new Cliente("Juan", 24, 42424422, 1525252525);
-            ServicioPeluqueria.EServicioPeluqueria servicio = ServicioPeluqueria.EServicioPeluqueria.CorteYTintura;
             peluqueria.PrecioCorte = 100;
             peluqueria.PrecioPlanchado = 200;
             peluqueria.PrecioTintura = 300;
             decimal expected = 400;
-            decimal actual = peluqueria.AtenderCliente(cliente, servicio);
+            decimal actual = peluqueria.AtenderCliente(cliente, 4);
 
             Assert.AreEqual(expected, actual);
         }
@@ -130,12 +124,11 @@ namespace TestsEntidades
         {
             ServicioPeluqueria peluqueria = new ServicioPeluqueria();
             Cliente cliente = new Cliente("Juan", 24, 42424422, 1525252525);
-            ServicioPeluqueria.EServicioPeluqueria servicio = ServicioPeluqueria.EServicioPeluqueria.PlanchadoYTintura;
             peluqueria.PrecioCorte = 100;
             peluqueria.PrecioPlanchado = 200;
             peluqueria.PrecioTintura = 300;
             decimal expected = 500;
-            decimal actual = peluqueria.AtenderCliente(cliente, servicio);
+            decimal actual = peluqueria.AtenderCliente(cliente, 5);
 
             Assert.AreEqual(expected, actual);
         }
@@ -145,12 +138,11 @@ namespace TestsEntidades
         {
             ServicioPeluqueria peluqueria = new ServicioPeluqueria();
             Cliente cliente = new Cliente("Juan", 24, 42424422, 1525252525);
-            ServicioPeluqueria.EServicioPeluqueria servicio = ServicioPeluqueria.EServicioPeluqueria.Todos;
             peluqueria.PrecioCorte = 100;
             peluqueria.PrecioPlanchado = 200;
             peluqueria.PrecioTintura = 300;
             decimal expected = 600;
-            decimal actual = peluqueria.AtenderCliente(cliente, servicio);
+            decimal actual = peluqueria.AtenderCliente(cliente, 6);
 
             Assert.AreEqual(expected, actual);
         }
