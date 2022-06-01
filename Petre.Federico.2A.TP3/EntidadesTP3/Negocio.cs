@@ -101,25 +101,30 @@ namespace EntidadesTP3
             bool convirtioPlanchado = false;
             bool convirtioTintura = false;
 
-            convirtioCorte = decimal.TryParse(precioCorteStr, out decimal precioCorte);
-            convirtioPlanchado = decimal.TryParse(precioPlanchadoStr, out decimal precioPlanchado);
-            convirtioTintura = decimal.TryParse(precioTinturaStr, out decimal precioTintura);
-
-            if (convirtioCorte && convirtioPlanchado && convirtioTintura)
+            try
             {
-                try
+                convirtioCorte = decimal.TryParse(precioCorteStr, out decimal precioCorte);
+                convirtioPlanchado = decimal.TryParse(precioPlanchadoStr, out decimal precioPlanchado);
+                convirtioTintura = decimal.TryParse(precioTinturaStr, out decimal precioTintura);
+
+                if (convirtioCorte && convirtioPlanchado && convirtioTintura)
                 {
                     peluqueria.CargarPrecios(precioCorte, precioPlanchado, precioTintura);
                 }
-                catch (PrecioNoValidoException)
+                else
                 {
-                    throw;
+                    throw new Exception("Error, los valores ingresados deben ser numéricos");
                 }
             }
-            else
+            catch (PrecioNoValidoException)
             {
-                throw new Exception("Error, los valores ingresados deben ser numéricos");
-            }            
+                throw;
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+         
         }
 
         public static bool operator ==(Negocio<T,U> negocio, T cliente)

@@ -101,6 +101,11 @@ namespace EntidadesTP3
             return this.MostrarCliente();
         }
 
+        public string ATexto()
+        {
+            return $"{this.Nombre} - {this.Edad} años - DNI: {this.Dni}";
+        }
+
         /// <summary>
         /// Para modificar el nombre del cliente ingresado por parámetro
         /// </summary>

@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "FormulariosTP3/1.0.0": {
+        "dependencies": {
+          "EntidadesTP3": "1.0.0"
+        },
+        "runtime": {
+          "FormulariosTP3.dll": {}
+        }
+      },
+      "EntidadesTP3/1.0.0": {
+        "runtime": {
+          "EntidadesTP3.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FormulariosTP3/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EntidadesTP3/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
