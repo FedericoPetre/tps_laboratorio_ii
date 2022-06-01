@@ -21,3 +21,4 @@ C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\FormulariosTP3\obj\Debug\ne
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\FormulariosTP3\obj\Debug\net5.0-windows\FormulariosTP3.pdb
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\FormulariosTP3\obj\Debug\net5.0-windows\FormulariosTP3.genruntimeconfig.cache
 C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\FormulariosTP3\obj\Debug\net5.0-windows\FormulariosTP3.FormCargaDePrecios.resources
+C:\Users\Owner\Desktop\repo_C#\Petre.Federico.2A.TP3\FormulariosTP3\obj\Debug\net5.0-windows\FormulariosTP3.FormModificarDatos.resources

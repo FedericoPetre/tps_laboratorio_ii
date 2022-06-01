@@ -147,6 +147,7 @@ namespace FormulariosTP3
             this.Name = "FormIngresarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar Datos Cliente";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormIngresarCliente_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

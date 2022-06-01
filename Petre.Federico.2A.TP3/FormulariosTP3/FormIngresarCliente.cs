@@ -68,5 +68,10 @@ namespace FormulariosTP3
 
 
         }
+
+        private void FormIngresarCliente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
     }
 }

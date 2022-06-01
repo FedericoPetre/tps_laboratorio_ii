@@ -83,13 +83,7 @@ namespace EntidadesTP3
 
         private string MostrarCliente()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Nombre: {this.Nombre}");
-            sb.AppendLine($"Edad: {this.Edad}");
-            sb.AppendLine($"DNI: {this.Dni}");
-            sb.AppendLine($"Teléfono: {this.Telefono}");
-
-            return sb.ToString();
+            return $"Nombre: {this.Nombre} - Edad: {this.Edad} años - DNI: {this.Dni} - Teléfono: {this.Telefono}";
         }
 
         /// <summary>
@@ -101,9 +95,13 @@ namespace EntidadesTP3
             return this.MostrarCliente();
         }
 
+        /// <summary>
+        /// Para luego buscar el cliente seleccionado en el comboBox del formPrincipal
+        /// </summary>
+        /// <returns></returns>
         public string ATexto()
         {
-            return $"{this.Nombre} - {this.Edad} años - DNI: {this.Dni}";
+            return $"{this.Nombre}-{this.Edad}-{this.Dni}-{this.Telefono}";
         }
 
         /// <summary>

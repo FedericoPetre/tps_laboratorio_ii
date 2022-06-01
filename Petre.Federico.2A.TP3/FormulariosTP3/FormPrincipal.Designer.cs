@@ -40,6 +40,9 @@ namespace FormulariosTP3
             this.btnMostrarInfoNegocio = new System.Windows.Forms.Button();
             this.btnRegistrarPrecios = new System.Windows.Forms.Button();
             this.btnGanancias = new System.Windows.Forms.Button();
+            this.btnDarDeBaja = new System.Windows.Forms.Button();
+            this.btnClientesNoAtendidos = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtGanancias
@@ -65,21 +68,21 @@ namespace FormulariosTP3
             // richTxtBoxInfo
             // 
             this.richTxtBoxInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTxtBoxInfo.Location = new System.Drawing.Point(405, 52);
+            this.richTxtBoxInfo.Location = new System.Drawing.Point(405, 45);
             this.richTxtBoxInfo.Name = "richTxtBoxInfo";
             this.richTxtBoxInfo.ReadOnly = true;
-            this.richTxtBoxInfo.Size = new System.Drawing.Size(293, 275);
+            this.richTxtBoxInfo.Size = new System.Drawing.Size(293, 334);
             this.richTxtBoxInfo.TabIndex = 2;
             this.richTxtBoxInfo.Text = "Aquí aparecerá la información del negocio.";
             // 
             // cmbClientesSinAtender
             // 
             this.cmbClientesSinAtender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbClientesSinAtender.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbClientesSinAtender.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbClientesSinAtender.FormattingEnabled = true;
             this.cmbClientesSinAtender.Location = new System.Drawing.Point(12, 257);
             this.cmbClientesSinAtender.Name = "cmbClientesSinAtender";
-            this.cmbClientesSinAtender.Size = new System.Drawing.Size(273, 29);
+            this.cmbClientesSinAtender.Size = new System.Drawing.Size(377, 25);
             this.cmbClientesSinAtender.TabIndex = 3;
             // 
             // lblCliente
@@ -95,19 +98,20 @@ namespace FormulariosTP3
             // btnModificarCliente
             // 
             this.btnModificarCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnModificarCliente.Location = new System.Drawing.Point(156, 292);
+            this.btnModificarCliente.Location = new System.Drawing.Point(123, 292);
             this.btnModificarCliente.Name = "btnModificarCliente";
-            this.btnModificarCliente.Size = new System.Drawing.Size(129, 35);
+            this.btnModificarCliente.Size = new System.Drawing.Size(144, 35);
             this.btnModificarCliente.TabIndex = 5;
             this.btnModificarCliente.Text = "Modificar Datos";
             this.btnModificarCliente.UseVisualStyleBackColor = true;
+            this.btnModificarCliente.Click += new System.EventHandler(this.btnModificarCliente_Click);
             // 
             // btnAtenderCliente
             // 
             this.btnAtenderCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAtenderCliente.Location = new System.Drawing.Point(12, 292);
             this.btnAtenderCliente.Name = "btnAtenderCliente";
-            this.btnAtenderCliente.Size = new System.Drawing.Size(129, 35);
+            this.btnAtenderCliente.Size = new System.Drawing.Size(105, 35);
             this.btnAtenderCliente.TabIndex = 6;
             this.btnAtenderCliente.Text = "Atender";
             this.btnAtenderCliente.UseVisualStyleBackColor = true;
@@ -117,7 +121,7 @@ namespace FormulariosTP3
             this.btnIngresarCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnIngresarCliente.Location = new System.Drawing.Point(12, 162);
             this.btnIngresarCliente.Name = "btnIngresarCliente";
-            this.btnIngresarCliente.Size = new System.Drawing.Size(194, 35);
+            this.btnIngresarCliente.Size = new System.Drawing.Size(176, 35);
             this.btnIngresarCliente.TabIndex = 7;
             this.btnIngresarCliente.Text = "Ingresar nuevo cliente";
             this.btnIngresarCliente.UseVisualStyleBackColor = true;
@@ -136,9 +140,9 @@ namespace FormulariosTP3
             // btnRegistrarPrecios
             // 
             this.btnRegistrarPrecios.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnRegistrarPrecios.Location = new System.Drawing.Point(228, 110);
+            this.btnRegistrarPrecios.Location = new System.Drawing.Point(212, 110);
             this.btnRegistrarPrecios.Name = "btnRegistrarPrecios";
-            this.btnRegistrarPrecios.Size = new System.Drawing.Size(161, 35);
+            this.btnRegistrarPrecios.Size = new System.Drawing.Size(177, 35);
             this.btnRegistrarPrecios.TabIndex = 9;
             this.btnRegistrarPrecios.Text = "Registrar Precios";
             this.btnRegistrarPrecios.UseVisualStyleBackColor = true;
@@ -147,18 +151,54 @@ namespace FormulariosTP3
             // btnGanancias
             // 
             this.btnGanancias.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnGanancias.Location = new System.Drawing.Point(228, 162);
+            this.btnGanancias.Location = new System.Drawing.Point(177, 45);
             this.btnGanancias.Name = "btnGanancias";
-            this.btnGanancias.Size = new System.Drawing.Size(161, 35);
+            this.btnGanancias.Size = new System.Drawing.Size(212, 41);
             this.btnGanancias.TabIndex = 10;
             this.btnGanancias.Text = "Mostrar Ganancias";
             this.btnGanancias.UseVisualStyleBackColor = true;
+            // 
+            // btnDarDeBaja
+            // 
+            this.btnDarDeBaja.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDarDeBaja.Location = new System.Drawing.Point(273, 292);
+            this.btnDarDeBaja.Name = "btnDarDeBaja";
+            this.btnDarDeBaja.Size = new System.Drawing.Size(116, 35);
+            this.btnDarDeBaja.TabIndex = 11;
+            this.btnDarDeBaja.Text = "Dar de baja";
+            this.btnDarDeBaja.UseVisualStyleBackColor = true;
+            this.btnDarDeBaja.Click += new System.EventHandler(this.btnDarDeBaja_Click);
+            // 
+            // btnClientesNoAtendidos
+            // 
+            this.btnClientesNoAtendidos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnClientesNoAtendidos.Location = new System.Drawing.Point(12, 344);
+            this.btnClientesNoAtendidos.Name = "btnClientesNoAtendidos";
+            this.btnClientesNoAtendidos.Size = new System.Drawing.Size(377, 35);
+            this.btnClientesNoAtendidos.TabIndex = 12;
+            this.btnClientesNoAtendidos.Text = "Mostrar clientes no atendidos";
+            this.btnClientesNoAtendidos.UseVisualStyleBackColor = true;
+            this.btnClientesNoAtendidos.Click += new System.EventHandler(this.btnClientesNoAtendidos_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLimpiar.Location = new System.Drawing.Point(212, 162);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(176, 35);
+            this.btnLimpiar.TabIndex = 13;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 354);
+            this.ClientSize = new System.Drawing.Size(719, 400);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnClientesNoAtendidos);
+            this.Controls.Add(this.btnDarDeBaja);
             this.Controls.Add(this.btnGanancias);
             this.Controls.Add(this.btnRegistrarPrecios);
             this.Controls.Add(this.btnMostrarInfoNegocio);
@@ -194,6 +234,9 @@ namespace FormulariosTP3
         private System.Windows.Forms.Button btnMostrarInfoNegocio;
         private System.Windows.Forms.Button btnRegistrarPrecios;
         private System.Windows.Forms.Button btnGanancias;
+        private System.Windows.Forms.Button btnDarDeBaja;
+        private System.Windows.Forms.Button btnClientesNoAtendidos;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }
 
