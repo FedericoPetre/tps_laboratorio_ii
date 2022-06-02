@@ -14,6 +14,12 @@ namespace EntidadesTP3
 
         public List<T> ClientesNoAtendidos { get { return this.clientesNoAtendidos; } }
         public List<U> ClientesAtendidos { get { return this.clientesAtendidos; } }
+        
+        /// <summary>
+        /// Para retornar las ganancias por los clientes atendidos
+        /// </summary>
+        /// <exception cref="PrecioNoEncontradoException">En caso de no encontrarse el precio por el servicio de alguno de los clientes atendidos</exception>
+        /// <exception cref="Exception">En caso de producirse un error no tomado en cuenta</exception>
         public decimal GananciaTotal { get { return this.ObtenerGananciasPorClientesAtendidos(); } }
            
         public Negocio()
@@ -41,13 +47,21 @@ namespace EntidadesTP3
         public string MostrarClientesNoAtendidos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Listado de clientes no atendidos");
-            sb.AppendLine("********************************");
 
-            foreach (T clienteItem in this.ClientesNoAtendidos)
+            if (this.ClientesNoAtendidos.Count == 0)
             {
-                sb.AppendLine($"{clienteItem.ToString()}");
+                sb.AppendLine("No hay clientes esperando a ser atendidos");
+            }
+            else
+            {
+                sb.AppendLine("Listado de clientes esperando a ser atendidos");
                 sb.AppendLine("********************************");
+
+                foreach (T clienteItem in this.ClientesNoAtendidos)
+                {
+                    sb.AppendLine($"{clienteItem.ToString()}");
+                    sb.AppendLine("********************************");
+                }
             }
 
             return sb.ToString();
@@ -65,6 +79,7 @@ namespace EntidadesTP3
             decimal precio = 0;
             U clienteAtendido = new U();
             precio = clienteAtendido.AtenderCliente(clienteASerAtendido, tipoServicio);
+            this.ClientesNoAtendidos.Remove(clienteASerAtendido);
             this.ClientesAtendidos.Add(clienteAtendido);
             return precio;
         }
@@ -84,47 +99,6 @@ namespace EntidadesTP3
                 precio = precio + cliente.PrecioServicio;
             }
             return precio;
-        }
-
-        /// <summary>
-        /// Para cargar los precios de la peluqueria con parámetros string
-        /// </summary>
-        /// <param name="precioCorteStr"></param>
-        /// <param name="precioPlanchadoStr"></param>
-        /// <param name="precioTinturaStr"></param>
-        /// <exception cref="PrecioNoValidoException">En caso de que alguno de los precios ingresados sea menor a cero</exception>
-        ///<exception cref="Exception">En caso de no poder convertir alguno de los precios ingresados por parámetro</exception>
-        public void CargarPreciosPeluqueria(string precioCorteStr, string precioPlanchadoStr, string precioTinturaStr)
-        {
-            U peluqueria = new U();
-            bool convirtioCorte = false;
-            bool convirtioPlanchado = false;
-            bool convirtioTintura = false;
-
-            try
-            {
-                convirtioCorte = decimal.TryParse(precioCorteStr, out decimal precioCorte);
-                convirtioPlanchado = decimal.TryParse(precioPlanchadoStr, out decimal precioPlanchado);
-                convirtioTintura = decimal.TryParse(precioTinturaStr, out decimal precioTintura);
-
-                if (convirtioCorte && convirtioPlanchado && convirtioTintura)
-                {
-                    peluqueria.CargarPrecios(precioCorte, precioPlanchado, precioTintura);
-                }
-                else
-                {
-                    throw new Exception("Error, los valores ingresados deben ser numéricos");
-                }
-            }
-            catch (PrecioNoValidoException)
-            {
-                throw;
-            }
-            catch(Exception)
-            {
-                throw;
-            }
-         
         }
 
         public static bool operator ==(Negocio<T,U> negocio, T cliente)

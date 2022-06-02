@@ -37,7 +37,7 @@ namespace FormulariosTP3
             this.btnModificarCliente = new System.Windows.Forms.Button();
             this.btnAtenderCliente = new System.Windows.Forms.Button();
             this.btnIngresarCliente = new System.Windows.Forms.Button();
-            this.btnMostrarInfoNegocio = new System.Windows.Forms.Button();
+            this.btnMostrarPrecios = new System.Windows.Forms.Button();
             this.btnRegistrarPrecios = new System.Windows.Forms.Button();
             this.btnGanancias = new System.Windows.Forms.Button();
             this.btnDarDeBaja = new System.Windows.Forms.Button();
@@ -115,6 +115,7 @@ namespace FormulariosTP3
             this.btnAtenderCliente.TabIndex = 6;
             this.btnAtenderCliente.Text = "Atender";
             this.btnAtenderCliente.UseVisualStyleBackColor = true;
+            this.btnAtenderCliente.Click += new System.EventHandler(this.btnAtenderCliente_Click);
             // 
             // btnIngresarCliente
             // 
@@ -127,15 +128,16 @@ namespace FormulariosTP3
             this.btnIngresarCliente.UseVisualStyleBackColor = true;
             this.btnIngresarCliente.Click += new System.EventHandler(this.btnIngresarCliente_Click);
             // 
-            // btnMostrarInfoNegocio
+            // btnMostrarPrecios
             // 
-            this.btnMostrarInfoNegocio.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnMostrarInfoNegocio.Location = new System.Drawing.Point(12, 110);
-            this.btnMostrarInfoNegocio.Name = "btnMostrarInfoNegocio";
-            this.btnMostrarInfoNegocio.Size = new System.Drawing.Size(194, 35);
-            this.btnMostrarInfoNegocio.TabIndex = 8;
-            this.btnMostrarInfoNegocio.Text = "Mostrar Información";
-            this.btnMostrarInfoNegocio.UseVisualStyleBackColor = true;
+            this.btnMostrarPrecios.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnMostrarPrecios.Location = new System.Drawing.Point(12, 110);
+            this.btnMostrarPrecios.Name = "btnMostrarPrecios";
+            this.btnMostrarPrecios.Size = new System.Drawing.Size(194, 35);
+            this.btnMostrarPrecios.TabIndex = 8;
+            this.btnMostrarPrecios.Text = "Mostrar Precios";
+            this.btnMostrarPrecios.UseVisualStyleBackColor = true;
+            this.btnMostrarPrecios.Click += new System.EventHandler(this.btnMostrarPrecios_Click);
             // 
             // btnRegistrarPrecios
             // 
@@ -157,6 +159,7 @@ namespace FormulariosTP3
             this.btnGanancias.TabIndex = 10;
             this.btnGanancias.Text = "Mostrar Ganancias";
             this.btnGanancias.UseVisualStyleBackColor = true;
+            this.btnGanancias.Click += new System.EventHandler(this.btnGanancias_Click);
             // 
             // btnDarDeBaja
             // 
@@ -201,7 +204,7 @@ namespace FormulariosTP3
             this.Controls.Add(this.btnDarDeBaja);
             this.Controls.Add(this.btnGanancias);
             this.Controls.Add(this.btnRegistrarPrecios);
-            this.Controls.Add(this.btnMostrarInfoNegocio);
+            this.Controls.Add(this.btnMostrarPrecios);
             this.Controls.Add(this.btnIngresarCliente);
             this.Controls.Add(this.btnAtenderCliente);
             this.Controls.Add(this.btnModificarCliente);
@@ -231,7 +234,7 @@ namespace FormulariosTP3
         private System.Windows.Forms.Button btnModificarCliente;
         private System.Windows.Forms.Button btnAtenderCliente;
         private System.Windows.Forms.Button btnIngresarCliente;
-        private System.Windows.Forms.Button btnMostrarInfoNegocio;
+        private System.Windows.Forms.Button btnMostrarPrecios;
         private System.Windows.Forms.Button btnRegistrarPrecios;
         private System.Windows.Forms.Button btnGanancias;
         private System.Windows.Forms.Button btnDarDeBaja;

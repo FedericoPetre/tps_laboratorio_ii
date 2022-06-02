@@ -45,8 +45,6 @@ namespace FormulariosTP3
         {
             FormCargaDePrecios formCargaPrecios = new FormCargaDePrecios();
 
-            formCargaPrecios.peluqueria = this.peluqueria;
-
             formCargaPrecios.ShowDialog();            
         }
 
@@ -76,14 +74,7 @@ namespace FormulariosTP3
 
         private void btnClientesNoAtendidos_Click(object sender, EventArgs e)
         {
-            if (this.peluqueria.ClientesNoAtendidos.Count == 0)
-            {
-                this.richTxtBoxInfo.Text = "Aún no se ingresado ningún cliente";
-            }
-            else
-            {
-                this.richTxtBoxInfo.Text = this.peluqueria.MostrarClientesNoAtendidos();
-            }            
+            this.richTxtBoxInfo.Text = this.peluqueria.MostrarClientesNoAtendidos();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -98,6 +89,57 @@ namespace FormulariosTP3
             {
                 this.peluqueria.ClientesNoAtendidos.RemoveAt(indexSeleccionado);
                 this.cmbClientesSinAtender.Items.RemoveAt(indexSeleccionado);
+            }
+        }
+
+        private void btnGanancias_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal ganancias = this.peluqueria.GananciaTotal;
+            }
+            catch (PrecioNoEncontradoException ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnAtenderCliente_Click(object sender, EventArgs e)
+        {
+            int indexSeleccionado = this.cmbClientesSinAtender.SelectedIndex;
+
+            if (indexSeleccionado != -1)
+            {
+                ServicioPeluqueria nuevoServicio = new ServicioPeluqueria();
+                nuevoServicio.ClienteAtendido = this.peluqueria.ClientesNoAtendidos[indexSeleccionado];
+                this.peluqueria.ClientesAtendidos.Add(nuevoServicio);
+                int countAtendidos = this.peluqueria.ClientesAtendidos.Count;
+                FormAtenderCliente formAtender = new FormAtenderCliente(this.peluqueria.ClientesAtendidos[countAtendidos-1]);
+                              
+                formAtender.ShowDialog();
+
+                this.txtGanancias.Text = formAtender.PrecioPorAtencion.ToString();
+            }
+        }
+
+        private void btnMostrarPrecios_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.richTxtBoxInfo.Text = ServicioPeluqueria.MostrarPreciosServicio();
+            }
+            catch(PrecioNoEncontradoException ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

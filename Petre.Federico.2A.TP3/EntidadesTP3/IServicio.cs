@@ -10,7 +10,7 @@ namespace EntidadesTP3
     {
         public decimal PrecioServicio { get; }
         public string TipoServicio { get; }
-        public string MostrarPreciosServicio();
+        public decimal AtenderCliente(Cliente cliente, int tipoServicio);
         public string MostrarServicioCompleto();
     }
 }

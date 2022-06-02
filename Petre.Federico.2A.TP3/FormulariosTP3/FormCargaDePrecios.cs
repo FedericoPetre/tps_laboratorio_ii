@@ -13,12 +13,9 @@ namespace FormulariosTP3
 {
     public partial class FormCargaDePrecios : Form
     {
-        public Negocio<Cliente, ServicioPeluqueria> peluqueria;
-
         public FormCargaDePrecios()
         {
             InitializeComponent();
-            this.peluqueria = new Negocio<Cliente, ServicioPeluqueria>();
         }
 
         private void btnRegistrarPrecios_Click(object sender, EventArgs e)
@@ -29,7 +26,7 @@ namespace FormulariosTP3
 
             try
             {
-                this.peluqueria.CargarPreciosPeluqueria(precioCorteStr, precioPlanchadoStr, precioTinturaStr);
+                ServicioPeluqueria.CargarPreciosPeluqueria(precioCorteStr, precioPlanchadoStr, precioTinturaStr);
 
                 DialogResult respuesta = MessageBox.Show("Los precios se han sido registrado exitosamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
