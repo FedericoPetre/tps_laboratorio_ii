@@ -8,152 +8,119 @@ namespace EntidadesTP3
 {
     public class ServicioPeluqueria : IServicio
     {
-       private Cliente clienteAtendido;
-       private EServicioPeluqueria tipoDeServicio;
-       public static Dictionary<EServicioPeluqueria, decimal> listadoDePrecios;
-       public static decimal precioCorte;
-       public static decimal precioPlanchado;
-       public static decimal precioTintura;
+        private Cliente clienteAtendido;
+        private EServicioPeluqueria tipoDeServicio;
 
-       public string TipoServicio { get { return this.tipoDeServicio.ToString(); } }
-        
+        private static decimal precioCorte;
+        private static decimal precioPlanchado;
+        private static decimal precioTintura;
+
+        public string TipoServicio { get { return this.tipoDeServicio.ToString(); } }
+
         /// <summary>
         /// Para retornar el precio por el servicio del cliente actual (instancia)
         /// </summary>
         /// <exception cref="PrecioNoEncontradoException">En caso de que no haya sido cargado el precio del tipo de servicio</exception>
         /// <exception cref="Exception">En caso de ocurrir un error desconocido</exception>
-       public decimal PrecioServicio { get { return this.ObtenerPrecio(this.tipoDeServicio); } }
-       public Cliente ClienteAtendido { get { return this.clienteAtendido; } set { this.clienteAtendido = value; } }
-
+        public decimal PrecioServicio { get { return this.ObtenerPrecio(this.tipoDeServicio); } }
+        public Cliente ClienteAtendido { get { return this.clienteAtendido; } set { this.clienteAtendido = value; } }
 
         /// <summary>
-        /// Para asignar o retornar el precio por el servicio de corte de pelo
+        /// Para asignar o retornar el Precio del corte de pelo
         /// </summary>
-        /// <exception cref="PrecioNoValidoException">En caso de que el valor a ingresar resulte invalido (menor a 0)</exception>
-        ///<exception cref="PrecioNoEncontradoException">En caso de que no se encuentre el precio del corte registrado</exception>
+        /// <exception cref="PrecioNoEncontradoException">En caso de que el precio no haya sido registrado</exception>
+        /// <exception cref="PrecioNoValidoException">En caso de que el precio ingresado sea menor a cero</exception>
         public static decimal PrecioCorte
         {
-            get
+            get 
             {
-                decimal precioRetornado = 0;
-                try
+                if (ServicioPeluqueria.precioCorte == 0)
                 {
-                    bool flagEstaCargado = ServicioPeluqueria.listadoDePrecios.ContainsKey(EServicioPeluqueria.Corte);
-                    if (!flagEstaCargado)
-                    {
-                        throw new PrecioNoEncontradoException("Error, no se ha ingresado el precio del corte");
-                    }
-                    else
-                    {
-                        precioRetornado = ServicioPeluqueria.precioCorte;
-                    }
+                    throw new PrecioNoEncontradoException("Error, el precio del corte no fue registrado");
                 }
-                catch (ArgumentNullException ex)
+                else
                 {
-                    throw new PrecioNoEncontradoException("Error al obtener el precio del servicio", ex);
+                    return ServicioPeluqueria.precioCorte;
                 }
-                return precioRetornado;
-
             }
-            set
+
+            set 
             {
                 if (value < 0)
                 {
-                    throw new PrecioNoValidoException("Error al cargar el precio al corte");
+                    throw new PrecioNoValidoException("Error al registrar el precio del corte, este debe ser mayor a 0");
                 }
                 else
                 {
                     ServicioPeluqueria.precioCorte = value;
-                    ServicioPeluqueria.listadoDePrecios.Add(EServicioPeluqueria.Corte, ServicioPeluqueria.precioCorte);
                 }
             }
         }
 
         /// <summary>
-        /// Para asignar o retornar el precio por el servicio de planchado de pelo
+        /// Para asignar o retornar el Precio del planchado de pelo
         /// </summary>
-        /// <exception cref="PrecioNoValidoException">En caso de que el valor a ingresar resulte invalido (menor a 0)</exception>
-        ///<exception cref="PrecioNoEncontradoException">En caso de que no se encuentre el precio del planchado registrado</exception>
+        /// <exception cref="PrecioNoEncontradoException">En caso de que el precio no haya sido registrado</exception>
+        /// <exception cref="PrecioNoValidoException">En caso de que el precio ingresado sea menor a cero</exception>
         public static decimal PrecioPlanchado
         {
             get
             {
-                decimal precioRetornado = 0;
-                try
+                if (ServicioPeluqueria.precioPlanchado == 0)
                 {
-                    bool flagEstaCargado = ServicioPeluqueria.listadoDePrecios.ContainsKey(EServicioPeluqueria.Planchado);
-                    if (!flagEstaCargado)
-                    {
-                        throw new PrecioNoEncontradoException("Error, no se ha ingresado el precio del planchado");
-                    }
-                    else
-                    {
-                        precioRetornado = ServicioPeluqueria.precioPlanchado;
-                    }
+                    throw new PrecioNoEncontradoException("Error, el precio del planchado no fue registrado");
                 }
-                catch (ArgumentNullException ex)
+                else
                 {
-                    throw new PrecioNoEncontradoException("Error al obtener el precio del servicio", ex);
+                    return ServicioPeluqueria.precioPlanchado;
                 }
-                return precioRetornado;
-
             }
+
             set
             {
                 if (value < 0)
                 {
-                    throw new PrecioNoValidoException("Error al cargar el precio al planchado");
+                    throw new PrecioNoValidoException("Error al registrar el precio del planchado, este debe ser mayor a 0");
                 }
                 else
                 {
                     ServicioPeluqueria.precioPlanchado = value;
-                    ServicioPeluqueria.listadoDePrecios.Add(EServicioPeluqueria.Planchado, ServicioPeluqueria.precioPlanchado);
                 }
             }
         }
 
         /// <summary>
-        /// Para asignar o retornar el precio por el servicio de Tintura
+        /// Para asignar o retornar el Precio de la tintura de pelo
         /// </summary>
-        /// <exception cref="PrecioNoValidoException">En caso de que el valor a ingresar resulte invalido (menor a 0)</exception>
-        ///<exception cref="PrecioNoEncontradoException">En caso de que no se encuentre el precio de la tintura registrado</exception>
+        /// <exception cref="PrecioNoEncontradoException">En caso de que el precio no haya sido registrado</exception>
+        /// <exception cref="PrecioNoValidoException">En caso de que el precio ingresado sea menor a cero</exception>
         public static decimal PrecioTintura
         {
             get
             {
-                decimal precioRetornado = 0;
-                try
+                if (ServicioPeluqueria.precioTintura == 0)
                 {
-                    bool flagEstaCargado = ServicioPeluqueria.listadoDePrecios.ContainsKey(EServicioPeluqueria.Tintura);
-                    if (!flagEstaCargado)
-                    {
-                        throw new PrecioNoEncontradoException("Error, no se ha ingresado el precio de la tintura");
-                    }
-                    else
-                    {
-                        precioRetornado = ServicioPeluqueria.precioTintura;
-                    }
+                    throw new PrecioNoEncontradoException("Error, el precio de la tintura no fue registrado");
                 }
-                catch (ArgumentNullException ex)
+                else
                 {
-                    throw new PrecioNoEncontradoException("Error al obtener el precio del servicio", ex);
+                    return ServicioPeluqueria.precioTintura;
                 }
-                return precioRetornado;
-
             }
+
             set
             {
                 if (value < 0)
                 {
-                    throw new PrecioNoValidoException("Error al cargar el precio a la tintura");
+                    throw new PrecioNoValidoException("Error al registrar el precio de la tintura, este debe ser mayor a 0");
                 }
                 else
                 {
                     ServicioPeluqueria.precioTintura = value;
-                    ServicioPeluqueria.listadoDePrecios.Add(EServicioPeluqueria.Tintura, ServicioPeluqueria.precioTintura);
                 }
             }
         }
+
 
         /// <summary>
         /// Muestra los precios por cada servicio de la peluquería
@@ -164,25 +131,25 @@ namespace EntidadesTP3
         public static string MostrarPreciosServicio()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Precios de la Peluquería");
+
             try
             {
-                if (ServicioPeluqueria.PrecioCorte != 0 && ServicioPeluqueria.PrecioPlanchado != 0 && ServicioPeluqueria.PrecioTintura != 0)
-                {
-                    foreach (KeyValuePair<EServicioPeluqueria, decimal> item in ServicioPeluqueria.listadoDePrecios)
-                    {
-                        sb.AppendLine($"Precio por {item.Key.ToString()} : ${item.Value}");
-                    }
-                }
-                else
-                {
-                    throw new Exception("Error al mostrar los precios de la peluqueria, no se han cargado todos los precios");
-                }
+                decimal precioCorte = ServicioPeluqueria.PrecioCorte;
+                decimal precioTintura = ServicioPeluqueria.PrecioTintura;
+                decimal precioPlanchado = ServicioPeluqueria.PrecioPlanchado;
 
+                sb.AppendLine("Precios de la Peluquería");
+                sb.AppendLine($"Corte: ${precioCorte}");
+                sb.AppendLine($"Planchado: ${precioPlanchado}");
+                sb.AppendLine($"Tintura: ${precioTintura}");
             }
-            catch (PrecioNoEncontradoException ex)
+            catch (PrecioNoEncontradoException)
             {
-                throw new Exception("Error al mostrar todos los precios", ex);
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
             }
 
             return sb.ToString();
@@ -207,8 +174,10 @@ namespace EntidadesTP3
         }
 
         static ServicioPeluqueria()
-        { 
-            ServicioPeluqueria.listadoDePrecios = new Dictionary<EServicioPeluqueria, decimal>();
+        {
+            ServicioPeluqueria.precioCorte = 0;
+            ServicioPeluqueria.precioPlanchado = 0;
+            ServicioPeluqueria.precioTintura = 0;
         }
 
         /// <summary>
@@ -278,7 +247,7 @@ namespace EntidadesTP3
             decimal precio = 0;
             EServicioPeluqueria tipoDeServicio = EServicioPeluqueria.Corte;
 
-            try 
+            try
             {
                 if (cliente is not null)
                 {
@@ -310,6 +279,10 @@ namespace EntidadesTP3
                     this.tipoDeServicio = tipoDeServicio;
                     precio = this.ObtenerPrecio(tipoDeServicio);
                 }
+                else
+                {
+                    throw new Exception("Error, no se ha encontrado ningún cliente para atender");
+                }
 
             }
             catch (PrecioNoEncontradoException)
@@ -318,7 +291,7 @@ namespace EntidadesTP3
             }
             catch (Exception ex)
             {
-                throw new Exception("Se ha producido un error desconocido", ex);
+                throw new Exception($"{ex.Message}");
             }
             return precio;
         }
@@ -387,10 +360,17 @@ namespace EntidadesTP3
         {
             return !(sv1 == sv2);
         }
+
+        public override bool Equals(object obj)
+        {
+            ServicioPeluqueria sp = obj as ServicioPeluqueria;
+            return sp is not null && this == sp;
+        }
+
         /// <summary>
         /// Tipos de servicios que ofrece la peluquería
         /// </summary>
-        public enum EServicioPeluqueria 
+        public enum EServicioPeluqueria
         {
             Corte, Planchado, Tintura, CorteYPlanchado, CorteYTintura, PlanchadoYTintura, Todos
         }
