@@ -43,6 +43,7 @@ namespace FormulariosTP3
             this.btnDarDeBaja = new System.Windows.Forms.Button();
             this.btnClientesNoAtendidos = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnServiciosRealizados = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtGanancias
@@ -194,11 +195,23 @@ namespace FormulariosTP3
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // btnServiciosRealizados
+            // 
+            this.btnServiciosRealizados.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnServiciosRealizados.Location = new System.Drawing.Point(139, 210);
+            this.btnServiciosRealizados.Name = "btnServiciosRealizados";
+            this.btnServiciosRealizados.Size = new System.Drawing.Size(250, 35);
+            this.btnServiciosRealizados.TabIndex = 14;
+            this.btnServiciosRealizados.Text = "Mostrar Servicios Realizados";
+            this.btnServiciosRealizados.UseVisualStyleBackColor = true;
+            this.btnServiciosRealizados.Click += new System.EventHandler(this.btnServiciosRealizados_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 400);
+            this.Controls.Add(this.btnServiciosRealizados);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnClientesNoAtendidos);
             this.Controls.Add(this.btnDarDeBaja);
@@ -240,6 +253,7 @@ namespace FormulariosTP3
         private System.Windows.Forms.Button btnDarDeBaja;
         private System.Windows.Forms.Button btnClientesNoAtendidos;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnServiciosRealizados;
     }
 }
 

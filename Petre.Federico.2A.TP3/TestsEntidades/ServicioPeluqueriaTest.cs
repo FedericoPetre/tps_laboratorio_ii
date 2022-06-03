@@ -12,30 +12,6 @@ namespace TestsEntidades
     public class ServicioPeluqueriaTest
     {
         [TestMethod]
-        [ExpectedException(typeof(PrecioNoEncontradoException))]
-        public void MostrarPreciosServicio_CuandoNoFueronCargados_DeberiaArrojarPrecioNoEncontradoException()
-        {
-            string precios = ServicioPeluqueria.MostrarPreciosServicio();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(PrecioNoEncontradoException))]
-        public void MostrarPreciosServicio_CuandoDosNoFueronCargados_DeberiaArrojarPrecioNoEncontradoException()
-        {
-            ServicioPeluqueria.PrecioCorte = 500;
-            string precios = ServicioPeluqueria.MostrarPreciosServicio();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(PrecioNoEncontradoException))]
-        public void MostrarPreciosServicio_CuandoUnoNoFueCargados_DeberiaArrojarPrecioNoEncontradoException()
-        {
-            ServicioPeluqueria.PrecioCorte = 100;
-            ServicioPeluqueria.PrecioPlanchado = 200;
-            string precios = ServicioPeluqueria.MostrarPreciosServicio();
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(Exception))]
         public void AtenderCliente_CuandoElClienteEsNull_DeberiaArrojarException()
         {

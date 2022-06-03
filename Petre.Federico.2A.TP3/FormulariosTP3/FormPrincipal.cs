@@ -30,7 +30,7 @@ namespace FormulariosTP3
                 formCliente.ShowDialog();
                 if (formCliente.cliente is not null)
                 {
-                    this.peluqueria.ClientesNoAtendidos.Add(formCliente.cliente);
+                    this.peluqueria.RegistrarCliente(formCliente.cliente);
                     this.cmbClientesSinAtender.Items.Add(formCliente.cliente.ATexto());
                 }
             }
@@ -53,11 +53,21 @@ namespace FormulariosTP3
             try
             {
                 int indexSeleccionado = this.cmbClientesSinAtender.SelectedIndex;
-                FormModificarDatos formModificar = new FormModificarDatos();
-                formModificar.cliente = this.peluqueria.ClientesNoAtendidos[indexSeleccionado];
-                formModificar.ShowDialog();
-                this.cmbClientesSinAtender.Items.RemoveAt(indexSeleccionado);
-                this.cmbClientesSinAtender.Items.Insert(indexSeleccionado, formModificar.cliente.ATexto());
+
+                if (indexSeleccionado != -1)
+                {
+                    FormModificarDatos formModificar = new FormModificarDatos();
+                    formModificar.cliente = this.peluqueria.ClientesNoAtendidos[indexSeleccionado];
+                    formModificar.ShowDialog();
+                    this.cmbClientesSinAtender.Items.RemoveAt(indexSeleccionado);
+                    this.cmbClientesSinAtender.Items.Insert(indexSeleccionado, formModificar.cliente.ATexto());
+                }
+                else
+                {
+                    MessageBox.Show("Error al modificar. No has seleccionado ningún cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -66,9 +76,7 @@ namespace FormulariosTP3
             catch (Exception)
             {
                 MessageBox.Show("Error desconocido, no se ha podido modificar datos del cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-           
-
+            }         
 
         }
 
@@ -87,8 +95,12 @@ namespace FormulariosTP3
             int indexSeleccionado = this.cmbClientesSinAtender.SelectedIndex;
             if (indexSeleccionado != -1)
             {
-                this.peluqueria.ClientesNoAtendidos.RemoveAt(indexSeleccionado);
+                this.peluqueria.DarDeBajaCliente(this.peluqueria.ClientesNoAtendidos[indexSeleccionado]);
                 this.cmbClientesSinAtender.Items.RemoveAt(indexSeleccionado);
+            }
+            else
+            {
+                MessageBox.Show("No has seleccionado un cliente para dar de baja", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -97,6 +109,8 @@ namespace FormulariosTP3
             try
             {
                 decimal ganancias = this.peluqueria.GananciaTotal;
+                this.txtGanancias.Text = $"${ganancias}";
+
             }
             catch (PrecioNoEncontradoException ex)
             {
@@ -113,18 +127,37 @@ namespace FormulariosTP3
         {
             int indexSeleccionado = this.cmbClientesSinAtender.SelectedIndex;
 
-            if (indexSeleccionado != -1)
+            try
             {
-                ServicioPeluqueria nuevoServicio = new ServicioPeluqueria();
-                nuevoServicio.ClienteAtendido = this.peluqueria.ClientesNoAtendidos[indexSeleccionado];
-                this.peluqueria.ClientesAtendidos.Add(nuevoServicio);
-                int countAtendidos = this.peluqueria.ClientesAtendidos.Count;
-                FormAtenderCliente formAtender = new FormAtenderCliente(this.peluqueria.ClientesAtendidos[countAtendidos-1]);
-                              
-                formAtender.ShowDialog();
+                if (indexSeleccionado != -1)
+                {
+                    FormAtenderCliente formAtender = new FormAtenderCliente(this.peluqueria.ClientesNoAtendidos[indexSeleccionado]);
+                    formAtender.ShowDialog();
+                    int tipoServicio = formAtender.IndexTipoServicio;
+                    decimal gananciaPorElCliente = this.peluqueria.AtenderCliente(indexSeleccionado, tipoServicio);
 
-                this.txtGanancias.Text = formAtender.PrecioPorAtencion.ToString();
+                    if (gananciaPorElCliente != 0)
+                    {
+                        this.txtGanancias.Text = $"${gananciaPorElCliente}";
+                        this.cmbClientesSinAtender.Items.RemoveAt(indexSeleccionado);
+                        this.peluqueria.ClientesNoAtendidos.RemoveAt(indexSeleccionado);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error, ningún cliente a sido seleccionado para atenderlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+            catch (PrecioNoEncontradoException ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ha ocurrido un error desconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void btnMostrarPrecios_Click(object sender, EventArgs e)
@@ -140,6 +173,18 @@ namespace FormulariosTP3
             catch (Exception ex)
             {
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnServiciosRealizados_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.richTxtBoxInfo.Text = this.peluqueria.MostrarServiciosRealizados();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"Error al mostrar los servicios realizados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

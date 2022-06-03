@@ -68,19 +68,27 @@ namespace EntidadesTP3
         }
 
         /// <summary>
-        /// Retorna la ganancia de atender al primer cliente de la lista de no atendidos y  coloca en la lista de atendidos
+        /// Retorna la ganancia de atender al cliente no atendido correspondiente al indice ingresado (si existiese) y lo coloca en la lista de atendidos
         /// </summary>
-        /// <param name="clienteASerAtendido"></param>
+        /// <param name="indexClienteAAtender"></param>
         /// <param name="tipoServicio">tipo de servicio a realizar 0-Corte, 1-Planchado, 2-Tintura, 3-CorteYPlanchado, 4-CorteYTintura, 5-PlanchadoYTintura, 6-Todos</param>
         /// <returns></returns>
         /// <exception cref="PrecioNoEncontradoException">En caso de no haber sido cargados los precios</exception>
-        private decimal AtenderCliente(T clienteASerAtendido, int tipoServicio)
+        public decimal AtenderCliente(int indexSeleccionado, int tipoServicio)
         {
             decimal precio = 0;
-            U clienteAtendido = new U();
-            precio = clienteAtendido.AtenderCliente(clienteASerAtendido, tipoServicio);
-            this.ClientesNoAtendidos.Remove(clienteASerAtendido);
-            this.ClientesAtendidos.Add(clienteAtendido);
+
+            U nuevoServicio = new U();
+            nuevoServicio.ClienteAtendido = this.ClientesNoAtendidos[indexSeleccionado];
+            precio = nuevoServicio.AtenderCliente(nuevoServicio.ClienteAtendido, tipoServicio);
+
+            this.ClientesAtendidos.Add(nuevoServicio);
+
+            if (precio == 0)
+            {
+                this.ClientesAtendidos.Remove(nuevoServicio);
+            }
+
             return precio;
         }
 
@@ -99,6 +107,26 @@ namespace EntidadesTP3
                 precio = precio + cliente.PrecioServicio;
             }
             return precio;
+        }
+
+        public string MostrarServiciosRealizados()
+        {
+            int countAtendidos = this.ClientesAtendidos.Count;
+            StringBuilder stringRetorno = new StringBuilder();
+
+            if (countAtendidos == 0)
+            {
+                stringRetorno.AppendLine("Aún no se han atendido clientes");
+            }
+            else
+            {
+                foreach (U item in this.ClientesAtendidos)
+                {
+                    stringRetorno.AppendLine($"{item.MostrarServicioCompleto()}");
+                }            
+            }
+
+            return stringRetorno.ToString();
         }
 
         public static bool operator ==(Negocio<T,U> negocio, T cliente)

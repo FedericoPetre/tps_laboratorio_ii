@@ -162,7 +162,6 @@ namespace EntidadesTP3
         public string MostrarServicioCompleto()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Información completa del servicio:");
             sb.AppendLine("**********************************");
             sb.AppendLine("*******Datos del Cliente**********");
             sb.AppendLine($"{this.clienteAtendido.ToString()}");

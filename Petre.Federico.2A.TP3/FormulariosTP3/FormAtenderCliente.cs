@@ -13,22 +13,21 @@ namespace FormulariosTP3
 {
     public partial class FormAtenderCliente : Form
     {
-        protected ServicioPeluqueria servicio;
-        protected decimal precioPorAtencion;
+        protected int indexTipoServicio;
+        protected Cliente cliente;
 
         private FormAtenderCliente()
         {
             InitializeComponent();
-            this.precioPorAtencion = 0;
+            this.indexTipoServicio = 0;
         }
 
-        public FormAtenderCliente(ServicioPeluqueria servicio) : this()
+        public FormAtenderCliente(Cliente cliente) : this()
         {
-            this.servicio = servicio;
+            this.cliente = cliente;
         }
 
-        public ServicioPeluqueria Servicio { get { return this.servicio; } set { this.servicio = value; } }
-        public decimal PrecioPorAtencion { get { return this.precioPorAtencion; } }
+        public int IndexTipoServicio { get { return this.indexTipoServicio; } set { this.indexTipoServicio = value; } }
 
         private void FormAtenderCliente_Load(object sender, EventArgs e)
         {
@@ -38,45 +37,27 @@ namespace FormulariosTP3
             this.cmbTipoDeServicio.Items.Add("Corte y Planchado");
             this.cmbTipoDeServicio.Items.Add("Corte y Tintura");
             this.cmbTipoDeServicio.Items.Add("Planchado y Tintura");
-            this.cmbTipoDeServicio.Items.Add("Todos");
-            if (this.Servicio.ClienteAtendido is not null)
+
+            if (this.cliente is not null)
             {
-                this.txtClienteAtendido.Text = this.Servicio.ClienteAtendido.ToString();
-            }            
+                this.txtClienteAtendido.Text = this.cliente.ToString();
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Cliente cliente = this.Servicio.ClienteAtendido;
-
-            if (cliente is not null)
+            int index = this.cmbTipoDeServicio.SelectedIndex;
+            if (index != -1)
             {
-                try
-                {
-                    int index = this.cmbTipoDeServicio.SelectedIndex;
-                    if (index != -1)
-                    {
-                        this.precioPorAtencion = this.servicio.AtenderCliente(this.servicio.ClienteAtendido, index);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Error, no has seleccionado ningún servicio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                   
-                }
-                catch (PrecioNoEncontradoException ex)
-                {
-                    MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                this.IndexTipoServicio = index;
+                MessageBox.Show($"El cliente ha sido atendido exitosamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             else
             {
-                MessageBox.Show($"Error al atender, no se ha encontrado ningún cliente para la atención", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }          
+                MessageBox.Show($"Error, no has seleccionado ningún servicio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
     }
