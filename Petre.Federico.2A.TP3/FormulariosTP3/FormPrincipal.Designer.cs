@@ -46,6 +46,9 @@ namespace FormulariosTP3
             this.groupClientes = new System.Windows.Forms.GroupBox();
             this.groupBoxInfo = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCargarDatosClientes = new System.Windows.Forms.Button();
+            this.btnGuardarDatosClientes = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.groupClientes.SuspendLayout();
             this.groupBoxInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -78,7 +81,7 @@ namespace FormulariosTP3
             this.richTxtBoxInfo.Location = new System.Drawing.Point(284, 26);
             this.richTxtBoxInfo.Name = "richTxtBoxInfo";
             this.richTxtBoxInfo.ReadOnly = true;
-            this.richTxtBoxInfo.Size = new System.Drawing.Size(385, 263);
+            this.richTxtBoxInfo.Size = new System.Drawing.Size(565, 263);
             this.richTxtBoxInfo.TabIndex = 2;
             this.richTxtBoxInfo.Text = "Aquí aparecerá la información del negocio.";
             // 
@@ -87,7 +90,7 @@ namespace FormulariosTP3
             this.cmbClientesSinAtender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClientesSinAtender.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbClientesSinAtender.FormattingEnabled = true;
-            this.cmbClientesSinAtender.Location = new System.Drawing.Point(6, 24);
+            this.cmbClientesSinAtender.Location = new System.Drawing.Point(6, 77);
             this.cmbClientesSinAtender.Name = "cmbClientesSinAtender";
             this.cmbClientesSinAtender.Size = new System.Drawing.Size(414, 25);
             this.cmbClientesSinAtender.TabIndex = 3;
@@ -95,7 +98,7 @@ namespace FormulariosTP3
             // btnModificarCliente
             // 
             this.btnModificarCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnModificarCliente.Location = new System.Drawing.Point(141, 63);
+            this.btnModificarCliente.Location = new System.Drawing.Point(141, 110);
             this.btnModificarCliente.Name = "btnModificarCliente";
             this.btnModificarCliente.Size = new System.Drawing.Size(157, 35);
             this.btnModificarCliente.TabIndex = 5;
@@ -106,7 +109,7 @@ namespace FormulariosTP3
             // btnAtenderCliente
             // 
             this.btnAtenderCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAtenderCliente.Location = new System.Drawing.Point(6, 63);
+            this.btnAtenderCliente.Location = new System.Drawing.Point(6, 110);
             this.btnAtenderCliente.Name = "btnAtenderCliente";
             this.btnAtenderCliente.Size = new System.Drawing.Size(129, 35);
             this.btnAtenderCliente.TabIndex = 6;
@@ -117,7 +120,7 @@ namespace FormulariosTP3
             // btnIngresarCliente
             // 
             this.btnIngresarCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnIngresarCliente.Location = new System.Drawing.Point(6, 104);
+            this.btnIngresarCliente.Location = new System.Drawing.Point(6, 22);
             this.btnIngresarCliente.Name = "btnIngresarCliente";
             this.btnIngresarCliente.Size = new System.Drawing.Size(414, 35);
             this.btnIngresarCliente.TabIndex = 7;
@@ -141,7 +144,7 @@ namespace FormulariosTP3
             this.btnRegistrarPrecios.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnRegistrarPrecios.Location = new System.Drawing.Point(15, 24);
             this.btnRegistrarPrecios.Name = "btnRegistrarPrecios";
-            this.btnRegistrarPrecios.Size = new System.Drawing.Size(169, 35);
+            this.btnRegistrarPrecios.Size = new System.Drawing.Size(185, 35);
             this.btnRegistrarPrecios.TabIndex = 9;
             this.btnRegistrarPrecios.Text = "Registrar Precios";
             this.btnRegistrarPrecios.UseVisualStyleBackColor = true;
@@ -161,7 +164,7 @@ namespace FormulariosTP3
             // btnDarDeBaja
             // 
             this.btnDarDeBaja.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDarDeBaja.Location = new System.Drawing.Point(304, 63);
+            this.btnDarDeBaja.Location = new System.Drawing.Point(304, 110);
             this.btnDarDeBaja.Name = "btnDarDeBaja";
             this.btnDarDeBaja.Size = new System.Drawing.Size(116, 35);
             this.btnDarDeBaja.TabIndex = 11;
@@ -183,7 +186,7 @@ namespace FormulariosTP3
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLimpiar.Location = new System.Drawing.Point(15, 77);
+            this.btnLimpiar.Location = new System.Drawing.Point(205, 24);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(169, 35);
             this.btnLimpiar.TabIndex = 13;
@@ -231,20 +234,56 @@ namespace FormulariosTP3
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCerrar);
+            this.groupBox1.Controls.Add(this.btnCargarDatosClientes);
+            this.groupBox1.Controls.Add(this.btnGuardarDatosClientes);
             this.groupBox1.Controls.Add(this.btnRegistrarPrecios);
             this.groupBox1.Controls.Add(this.btnLimpiar);
             this.groupBox1.Location = new System.Drawing.Point(469, 295);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 154);
+            this.groupBox1.Size = new System.Drawing.Size(380, 154);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Zona control";
+            // 
+            // btnCargarDatosClientes
+            // 
+            this.btnCargarDatosClientes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCargarDatosClientes.Location = new System.Drawing.Point(15, 110);
+            this.btnCargarDatosClientes.Name = "btnCargarDatosClientes";
+            this.btnCargarDatosClientes.Size = new System.Drawing.Size(185, 35);
+            this.btnCargarDatosClientes.TabIndex = 15;
+            this.btnCargarDatosClientes.Text = "Cargar Datos Clientes";
+            this.btnCargarDatosClientes.UseVisualStyleBackColor = true;
+            this.btnCargarDatosClientes.Click += new System.EventHandler(this.btnCargarDatosClientes_Click);
+            // 
+            // btnGuardarDatosClientes
+            // 
+            this.btnGuardarDatosClientes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnGuardarDatosClientes.Location = new System.Drawing.Point(15, 65);
+            this.btnGuardarDatosClientes.Name = "btnGuardarDatosClientes";
+            this.btnGuardarDatosClientes.Size = new System.Drawing.Size(185, 35);
+            this.btnGuardarDatosClientes.TabIndex = 14;
+            this.btnGuardarDatosClientes.Text = "Guardar Datos Clientes";
+            this.btnGuardarDatosClientes.UseVisualStyleBackColor = true;
+            this.btnGuardarDatosClientes.Click += new System.EventHandler(this.btnGuardarDatosClientes_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCerrar.Location = new System.Drawing.Point(206, 65);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(169, 35);
+            this.btnCerrar.TabIndex = 16;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(681, 452);
+            this.ClientSize = new System.Drawing.Size(861, 452);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxInfo);
             this.Controls.Add(this.groupClientes);
@@ -257,6 +296,7 @@ namespace FormulariosTP3
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Petre.Federico.2A.TP3";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPrincipal_FormClosing);
             this.groupClientes.ResumeLayout(false);
             this.groupBoxInfo.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -284,6 +324,9 @@ namespace FormulariosTP3
         private System.Windows.Forms.GroupBox groupClientes;
         private System.Windows.Forms.GroupBox groupBoxInfo;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnGuardarDatosClientes;
+        private System.Windows.Forms.Button btnCargarDatosClientes;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }
 

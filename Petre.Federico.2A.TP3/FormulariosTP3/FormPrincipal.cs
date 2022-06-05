@@ -13,7 +13,7 @@ namespace FormulariosTP3
 {  
     public partial class FormPrincipal : Form
     {
-        public Negocio<Cliente, ServicioPeluqueria> peluqueria;
+        protected Negocio<Cliente, ServicioPeluqueria> peluqueria;
 
         public FormPrincipal()
         {
@@ -194,7 +194,85 @@ namespace FormulariosTP3
             }
             catch (Exception)
             {
-                MessageBox.Show($"Error al mostrar los servicios realizados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al mostrar los servicios realizados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnGuardarDatosClientes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GestionDeArchivos.SerializarXML("clientesNoAtendidos.xml", this.peluqueria.ClientesNoAtendidos);
+                GestionDeArchivos.GuardarTexto("clientesNoAtendidos.txt", this.peluqueria.MostrarClientesNoAtendidos());
+                GestionDeArchivos.SerializarJSON("clientesAtentidos.json", this.peluqueria.ClientesAtendidos);
+                GestionDeArchivos.GuardarTexto("clientesAtendidos.txt", this.peluqueria.MostrarServiciosRealizados());
+                GestionDeArchivos.GuardarTexto("preciosPeluqueria.txt", ServicioPeluqueria.MostrarPreciosServicio());
+                MessageBox.Show("Se han guardado los datos exitosamente", "atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (PrecioNoEncontradoException)
+            {
+                MessageBox.Show("Ocurrió un error al guardar el listado de precios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrió un error al guardar los datos de los clientes, por favor verifique que todo sea correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCargarDatosClientes_Click(object sender, EventArgs e)
+        {
+            List<Cliente> clientesNoAtendidos = null;
+            List<ServicioPeluqueria> clientesAtendidos = null;
+            try
+            {
+                clientesNoAtendidos = GestionDeArchivos.DeserializarXML("clientesNoAtendidos.xml");
+                clientesAtendidos = GestionDeArchivos.DeserializarJSON("clientesAtentidos.json");
+
+                if (clientesNoAtendidos is not null && clientesAtendidos is not null)
+                {
+                    MessageBox.Show("Se han cargado los datos exitosamente", "atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.btnCargarDatosClientes.Visible = false;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los datos de los clientes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                foreach (Cliente item in clientesNoAtendidos)
+                {
+                    if (item is not null && this.peluqueria != item)
+                    {
+                        this.peluqueria.ClientesNoAtendidos.Add(item);
+                        this.cmbClientesSinAtender.Items.Add(item.ATexto());
+                    }
+                }
+
+                foreach(ServicioPeluqueria item in clientesAtendidos)
+                {
+                    if (item is not null && this.peluqueria != item)
+                    {
+                        this.peluqueria.ClientesAtendidos.Add(item);
+                    }
+                }
+            }
+
+            
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("Está seguro que desea salir?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (respuesta == DialogResult.No)
+            {
+                e.Cancel = true;
             }
         }
     }

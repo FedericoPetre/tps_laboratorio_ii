@@ -1,0 +1,32 @@
+[
+  {
+    "TipoServicio": "Corte",
+    "PrecioServicio": 500,
+    "ClienteAtendido": {
+      "Nombre": "Federico",
+      "Edad": 23,
+      "Dni": 42000000,
+      "Telefono": 1525252525
+    }
+  },
+  {
+    "TipoServicio": "PlanchadoYTintura",
+    "PrecioServicio": 3500,
+    "ClienteAtendido": {
+      "Nombre": "Julieta",
+      "Edad": 15,
+      "Dni": 44222222,
+      "Telefono": 1512121212
+    }
+  },
+  {
+    "TipoServicio": "Corte",
+    "PrecioServicio": 500,
+    "ClienteAtendido": {
+      "Nombre": "Gabriel",
+      "Edad": 25,
+      "Dni": 41011111,
+      "Telefono": 1515151515
+    }
+  }
+]

@@ -354,7 +354,7 @@ namespace EntidadesTP3
         /// <returns></returns>
         public static bool operator ==(ServicioPeluqueria sv1, ServicioPeluqueria sv2)
         {
-            return sv1.clienteAtendido == sv2.clienteAtendido && sv1.clienteAtendido == sv2.clienteAtendido;
+            return sv1.clienteAtendido == sv2.clienteAtendido && sv1.TipoServicio == sv2.TipoServicio;
         }
 
         public static bool operator !=(ServicioPeluqueria sv1, ServicioPeluqueria sv2)

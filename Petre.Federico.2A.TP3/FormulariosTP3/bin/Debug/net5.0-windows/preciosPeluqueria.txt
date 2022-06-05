@@ -1,0 +1,5 @@
+Precios de la Peluquería
+Corte: $500
+Planchado: $1500
+Tintura: $2000
+

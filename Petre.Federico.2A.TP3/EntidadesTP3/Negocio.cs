@@ -55,12 +55,12 @@ namespace EntidadesTP3
             else
             {
                 sb.AppendLine("Listado de clientes esperando a ser atendidos");
-                sb.AppendLine("********************************");
+                sb.AppendLine("*********************************");
 
                 foreach (T clienteItem in this.ClientesNoAtendidos)
                 {
                     sb.AppendLine($"{clienteItem.ToString()}");
-                    sb.AppendLine("********************************");
+                    sb.AppendLine("*********************************");
                 }
             }
 
@@ -148,6 +148,27 @@ namespace EntidadesTP3
         public static bool operator !=(Negocio<T, U> negocio, T cliente)
         {
             return !(negocio == cliente);
+        }
+
+        public static bool operator ==(Negocio<T, U> negocio, U servicio)
+        {
+            bool flagEstaEnElNegocio = false;
+
+            foreach (U item in negocio.ClientesAtendidos)
+            {
+                if (item == servicio)
+                {
+                    flagEstaEnElNegocio = true;
+                    break;
+                }
+            }
+
+            return flagEstaEnElNegocio;
+        }
+
+        public static bool operator !=(Negocio<T, U> negocio, U servicio)
+        {
+            return !(negocio == servicio);
         }
 
     }
