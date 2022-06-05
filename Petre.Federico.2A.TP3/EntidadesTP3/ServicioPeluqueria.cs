@@ -10,19 +10,20 @@ namespace EntidadesTP3
     {
         private Cliente clienteAtendido;
         private EServicioPeluqueria tipoDeServicio;
+        private decimal precioPorElServicio;
 
         private static decimal precioCorte;
         private static decimal precioPlanchado;
         private static decimal precioTintura;
 
-        public string TipoServicio { get { return this.tipoDeServicio.ToString(); } }
+        public string TipoServicio { get { return this.tipoDeServicio.ToString(); } set { this.tipoDeServicio = (EServicioPeluqueria) Enum.Parse(typeof(EServicioPeluqueria), value); } }
 
         /// <summary>
         /// Para retornar el precio por el servicio del cliente actual (instancia)
         /// </summary>
         /// <exception cref="PrecioNoEncontradoException">En caso de que no haya sido cargado el precio del tipo de servicio</exception>
         /// <exception cref="Exception">En caso de ocurrir un error desconocido</exception>
-        public decimal PrecioServicio { get { return this.ObtenerPrecio(this.tipoDeServicio); } }
+        public decimal PrecioServicio { get { return this.precioPorElServicio; } set { this.precioPorElServicio = value; } }
         public Cliente ClienteAtendido { get { return this.clienteAtendido; } set { this.clienteAtendido = value; } }
 
         /// <summary>
@@ -277,6 +278,7 @@ namespace EntidadesTP3
                     }
                     this.tipoDeServicio = tipoDeServicio;
                     precio = this.ObtenerPrecio(tipoDeServicio);
+                    this.precioPorElServicio = precio;
                 }
                 else
                 {

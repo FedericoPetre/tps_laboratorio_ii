@@ -64,6 +64,11 @@ namespace EntidadesTP3
             }
         }
 
+        public Cliente()
+        { 
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -83,7 +88,7 @@ namespace EntidadesTP3
 
         private string MostrarCliente()
         {
-            return $"Nombre: {this.Nombre}\nEdad: {this.Edad} años \nDNI: {this.Dni} \nTeléfono: {this.Telefono}";
+            return $"Nombre: {this.Nombre}\nEdad: {this.Edad} años \nDNI: {this.Dni} \nTeléfono: {this.Telefono}\n";
         }
 
         /// <summary>
