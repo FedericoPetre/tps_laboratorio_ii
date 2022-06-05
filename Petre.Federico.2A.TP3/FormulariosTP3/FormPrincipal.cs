@@ -28,7 +28,7 @@ namespace FormulariosTP3
             try
             {
                 formCliente.ShowDialog();
-                if (formCliente.cliente is not null)
+                if (formCliente.cliente is not null && formCliente.DialogResult == DialogResult.OK)
                 {
                     this.peluqueria.RegistrarCliente(formCliente.cliente);
                     this.cmbClientesSinAtender.Items.Add(formCliente.cliente.ATexto());
@@ -44,8 +44,12 @@ namespace FormulariosTP3
         private void btnRegistrarPrecios_Click(object sender, EventArgs e)
         {
             FormCargaDePrecios formCargaPrecios = new FormCargaDePrecios();
+            formCargaPrecios.ShowDialog();
 
-            formCargaPrecios.ShowDialog();            
+            if (formCargaPrecios.DialogResult == DialogResult.OK)
+            {
+                this.btnRegistrarPrecios.Text = "Modificar Precios";
+            }            
         }
 
         private void btnModificarCliente_Click(object sender, EventArgs e)
@@ -87,7 +91,8 @@ namespace FormulariosTP3
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            this.richTxtBoxInfo.Text = " ";
+            this.richTxtBoxInfo.Text = "Aquí aparecerá la información del negocio.";
+            this.txtGanancias.Text = "$0";
         }
 
         private void btnDarDeBaja_Click(object sender, EventArgs e)
@@ -134,18 +139,23 @@ namespace FormulariosTP3
                     FormAtenderCliente formAtender = new FormAtenderCliente(this.peluqueria.ClientesNoAtendidos[indexSeleccionado]);
                     formAtender.ShowDialog();
                     int tipoServicio = formAtender.IndexTipoServicio;
-                    decimal gananciaPorElCliente = this.peluqueria.AtenderCliente(indexSeleccionado, tipoServicio);
 
-                    if (gananciaPorElCliente != 0)
+                    if (formAtender.DialogResult == DialogResult.OK)
                     {
-                        this.txtGanancias.Text = $"${gananciaPorElCliente}";
-                        this.cmbClientesSinAtender.Items.RemoveAt(indexSeleccionado);
-                        this.peluqueria.ClientesNoAtendidos.RemoveAt(indexSeleccionado);
+                        decimal gananciaPorElCliente = this.peluqueria.AtenderCliente(indexSeleccionado, tipoServicio);
+
+                        if (gananciaPorElCliente != 0)
+                        {
+                            this.txtGanancias.Text = $"${gananciaPorElCliente}";
+                            this.cmbClientesSinAtender.Items.RemoveAt(indexSeleccionado);
+                            this.peluqueria.ClientesNoAtendidos.RemoveAt(indexSeleccionado);
+                            MessageBox.Show("El cliente ha sido atendido exitosamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Error, ningún cliente a sido seleccionado para atenderlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error, ningún cliente ha sido seleccionado para atenderlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (PrecioNoEncontradoException ex)

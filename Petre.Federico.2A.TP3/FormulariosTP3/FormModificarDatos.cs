@@ -28,42 +28,6 @@ namespace FormulariosTP3
             this.cmbModificarDatos.Items.Add("Número de Teléfono");
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            int indexSeleccionado = this.cmbModificarDatos.SelectedIndex;
-
-            switch (indexSeleccionado)
-            {
-                case 0:
-                    this.lblNuevoDato.Text = "Ingrese nuevo nombre aquí :";
-                    this.lblNuevoDato.Visible = true;
-                    this.txtDatoModificado.Visible = true;
-                    this.bntModificar.Visible = true;
-                    break;
-                case 1:
-                    this.lblNuevoDato.Text = "Ingrese nueva edad aquí :";
-                    this.lblNuevoDato.Visible = true;
-                    this.txtDatoModificado.Visible = true;
-                    this.bntModificar.Visible = true;
-                    break;
-                case 2:
-                    this.lblNuevoDato.Text = "Ingrese nuevo dni aquí :";
-                    this.lblNuevoDato.Visible = true;
-                    this.txtDatoModificado.Visible = true;
-                    this.bntModificar.Visible = true;
-                    break;
-                case 3:
-                    this.lblNuevoDato.Text = "Ingrese nuevo teléfono aquí :";
-                    this.lblNuevoDato.Visible = true;
-                    this.txtDatoModificado.Visible = true;
-                    this.bntModificar.Visible = true;
-                    break;
-                default:
-                    MessageBox.Show("Error, no has seleccionado dato a modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-            }
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -116,6 +80,34 @@ namespace FormulariosTP3
             catch (Exception)
             {
                 MessageBox.Show("Se ha producido un error desconocido, por favor comprueba que el dato ingresado sea correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            int indexSeleccionado = this.cmbModificarDatos.SelectedIndex;
+
+            switch (indexSeleccionado)
+            {
+                case 0:
+                    this.lblNuevoDato.Text = "Ingrese nuevo nombre aquí :";
+                    this.groupBoxModificacion.Visible = true;
+                    break;
+                case 1:
+                    this.lblNuevoDato.Text = "Ingrese nueva edad aquí :";
+                    this.groupBoxModificacion.Visible = true;
+                    break;
+                case 2:
+                    this.lblNuevoDato.Text = "Ingrese nuevo dni aquí :";
+                    this.groupBoxModificacion.Visible = true;
+                    break;
+                case 3:
+                    this.lblNuevoDato.Text = "Ingrese nuevo teléfono aquí :";
+                    this.groupBoxModificacion.Visible = true;
+                    break;
+                default:
+                    MessageBox.Show("Error, no has seleccionado dato a modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
             }
         }
     }

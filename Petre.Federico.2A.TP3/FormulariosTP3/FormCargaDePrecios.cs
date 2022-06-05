@@ -28,12 +28,9 @@ namespace FormulariosTP3
             {
                 ServicioPeluqueria.CargarPreciosPeluqueria(precioCorteStr, precioPlanchadoStr, precioTinturaStr);
 
-                DialogResult respuesta = MessageBox.Show("Los precios se han sido registrado exitosamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                if (respuesta == DialogResult.OK)
-                {
-                    this.Close();
-                }
+                MessageBox.Show("Los precios se han sido registrado exitosamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             catch (PrecioNoValidoException)
             {
@@ -45,6 +42,12 @@ namespace FormulariosTP3
             }          
 
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

@@ -31,15 +31,16 @@ namespace FormulariosTP3
         {
             this.lblClienteAtendido = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.txtClienteAtendido = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTipoDeServicio = new System.Windows.Forms.ComboBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.richCliente = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // lblClienteAtendido
             // 
             this.lblClienteAtendido.AutoSize = true;
-            this.lblClienteAtendido.Location = new System.Drawing.Point(12, 50);
+            this.lblClienteAtendido.Location = new System.Drawing.Point(12, 22);
             this.lblClienteAtendido.Name = "lblClienteAtendido";
             this.lblClienteAtendido.Size = new System.Drawing.Size(163, 21);
             this.lblClienteAtendido.TabIndex = 0;
@@ -47,7 +48,7 @@ namespace FormulariosTP3
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(165, 255);
+            this.btnAceptar.Location = new System.Drawing.Point(12, 249);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(141, 44);
             this.btnAceptar.TabIndex = 1;
@@ -55,19 +56,10 @@ namespace FormulariosTP3
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // txtClienteAtendido
-            // 
-            this.txtClienteAtendido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtClienteAtendido.Location = new System.Drawing.Point(12, 83);
-            this.txtClienteAtendido.Name = "txtClienteAtendido";
-            this.txtClienteAtendido.ReadOnly = true;
-            this.txtClienteAtendido.Size = new System.Drawing.Size(294, 29);
-            this.txtClienteAtendido.TabIndex = 2;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 151);
+            this.label1.Location = new System.Drawing.Point(12, 161);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 21);
             this.label1.TabIndex = 3;
@@ -77,24 +69,46 @@ namespace FormulariosTP3
             // 
             this.cmbTipoDeServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoDeServicio.FormattingEnabled = true;
-            this.cmbTipoDeServicio.Location = new System.Drawing.Point(12, 186);
+            this.cmbTipoDeServicio.Location = new System.Drawing.Point(12, 194);
             this.cmbTipoDeServicio.Name = "cmbTipoDeServicio";
             this.cmbTipoDeServicio.Size = new System.Drawing.Size(294, 29);
             this.cmbTipoDeServicio.TabIndex = 4;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(165, 249);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(141, 44);
+            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // richCliente
+            // 
+            this.richCliente.Location = new System.Drawing.Point(12, 46);
+            this.richCliente.MaxLength = 300;
+            this.richCliente.Name = "richCliente";
+            this.richCliente.ReadOnly = true;
+            this.richCliente.Size = new System.Drawing.Size(294, 112);
+            this.richCliente.TabIndex = 6;
+            this.richCliente.Text = "";
             // 
             // FormAtenderCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 323);
+            this.ControlBox = false;
+            this.Controls.Add(this.richCliente);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.cmbTipoDeServicio);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtClienteAtendido);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lblClienteAtendido);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAtenderCliente";
@@ -110,8 +124,9 @@ namespace FormulariosTP3
 
         private System.Windows.Forms.Label lblClienteAtendido;
         private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.TextBox txtClienteAtendido;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbTipoDeServicio;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.RichTextBox richCliente;
     }
 }

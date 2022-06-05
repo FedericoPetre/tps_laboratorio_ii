@@ -37,10 +37,11 @@ namespace FormulariosTP3
             this.cmbTipoDeServicio.Items.Add("Corte y Planchado");
             this.cmbTipoDeServicio.Items.Add("Corte y Tintura");
             this.cmbTipoDeServicio.Items.Add("Planchado y Tintura");
+            this.cmbTipoDeServicio.Items.Add("Todos");
 
             if (this.cliente is not null)
             {
-                this.txtClienteAtendido.Text = this.cliente.ToString();
+                this.richCliente.Text = this.cliente.ToString();
             }
         }
 
@@ -50,15 +51,22 @@ namespace FormulariosTP3
             if (index != -1)
             {
                 this.IndexTipoServicio = index;
-                MessageBox.Show($"El cliente ha sido atendido exitosamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
                 MessageBox.Show($"Error, no has seleccionado ningún servicio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.Cancel;
             }
 
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

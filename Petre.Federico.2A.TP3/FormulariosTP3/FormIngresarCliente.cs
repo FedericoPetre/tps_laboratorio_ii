@@ -41,12 +41,10 @@ namespace FormulariosTP3
                 {
                     this.cliente = new Cliente(nombre, edad, dni, numeroTelefono);
 
-                    DialogResult respuesta = MessageBox.Show("Los datos han sido registrados exitosamente", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Los datos han sido registrados exitosamente", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if (respuesta == DialogResult.OK)
-                    {
-                        this.Close();
-                    }
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 else
                 {
@@ -69,9 +67,10 @@ namespace FormulariosTP3
 
         }
 
-        private void FormIngresarCliente_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

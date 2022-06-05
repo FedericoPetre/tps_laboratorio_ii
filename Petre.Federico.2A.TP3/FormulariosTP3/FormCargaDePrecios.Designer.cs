@@ -37,13 +37,14 @@ namespace FormulariosTP3
             this.txtPrecioPlanchado = new System.Windows.Forms.TextBox();
             this.txtPrecioTintura = new System.Windows.Forms.TextBox();
             this.btnRegistrarPrecios = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCargaPrecios
             // 
             this.lblCargaPrecios.AutoSize = true;
             this.lblCargaPrecios.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblCargaPrecios.Location = new System.Drawing.Point(93, 24);
+            this.lblCargaPrecios.Location = new System.Drawing.Point(109, 31);
             this.lblCargaPrecios.Name = "lblCargaPrecios";
             this.lblCargaPrecios.Size = new System.Drawing.Size(126, 21);
             this.lblCargaPrecios.TabIndex = 0;
@@ -53,7 +54,7 @@ namespace FormulariosTP3
             // 
             this.lblPrecioCorte.AutoSize = true;
             this.lblPrecioCorte.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPrecioCorte.Location = new System.Drawing.Point(12, 71);
+            this.lblPrecioCorte.Location = new System.Drawing.Point(12, 80);
             this.lblPrecioCorte.Name = "lblPrecioCorte";
             this.lblPrecioCorte.Size = new System.Drawing.Size(120, 21);
             this.lblPrecioCorte.TabIndex = 1;
@@ -63,7 +64,7 @@ namespace FormulariosTP3
             // 
             this.lblPrecioPlanchado.AutoSize = true;
             this.lblPrecioPlanchado.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPrecioPlanchado.Location = new System.Drawing.Point(12, 140);
+            this.lblPrecioPlanchado.Location = new System.Drawing.Point(6, 129);
             this.lblPrecioPlanchado.Name = "lblPrecioPlanchado";
             this.lblPrecioPlanchado.Size = new System.Drawing.Size(154, 21);
             this.lblPrecioPlanchado.TabIndex = 2;
@@ -73,7 +74,7 @@ namespace FormulariosTP3
             // 
             this.lblPrecioTintura.AutoSize = true;
             this.lblPrecioTintura.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPrecioTintura.Location = new System.Drawing.Point(12, 208);
+            this.lblPrecioTintura.Location = new System.Drawing.Point(6, 182);
             this.lblPrecioTintura.Name = "lblPrecioTintura";
             this.lblPrecioTintura.Size = new System.Drawing.Size(143, 21);
             this.lblPrecioTintura.TabIndex = 3;
@@ -83,7 +84,7 @@ namespace FormulariosTP3
             // 
             this.txtPrecioCorte.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioCorte.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPrecioCorte.Location = new System.Drawing.Point(12, 95);
+            this.txtPrecioCorte.Location = new System.Drawing.Point(175, 78);
             this.txtPrecioCorte.Name = "txtPrecioCorte";
             this.txtPrecioCorte.Size = new System.Drawing.Size(154, 29);
             this.txtPrecioCorte.TabIndex = 4;
@@ -92,7 +93,7 @@ namespace FormulariosTP3
             // 
             this.txtPrecioPlanchado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioPlanchado.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPrecioPlanchado.Location = new System.Drawing.Point(12, 164);
+            this.txtPrecioPlanchado.Location = new System.Drawing.Point(175, 129);
             this.txtPrecioPlanchado.Name = "txtPrecioPlanchado";
             this.txtPrecioPlanchado.Size = new System.Drawing.Size(154, 29);
             this.txtPrecioPlanchado.TabIndex = 5;
@@ -101,7 +102,7 @@ namespace FormulariosTP3
             // 
             this.txtPrecioTintura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioTintura.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPrecioTintura.Location = new System.Drawing.Point(12, 232);
+            this.txtPrecioTintura.Location = new System.Drawing.Point(175, 182);
             this.txtPrecioTintura.Name = "txtPrecioTintura";
             this.txtPrecioTintura.Size = new System.Drawing.Size(154, 29);
             this.txtPrecioTintura.TabIndex = 6;
@@ -109,19 +110,32 @@ namespace FormulariosTP3
             // btnRegistrarPrecios
             // 
             this.btnRegistrarPrecios.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnRegistrarPrecios.Location = new System.Drawing.Point(164, 284);
+            this.btnRegistrarPrecios.Location = new System.Drawing.Point(12, 243);
             this.btnRegistrarPrecios.Name = "btnRegistrarPrecios";
-            this.btnRegistrarPrecios.Size = new System.Drawing.Size(147, 44);
+            this.btnRegistrarPrecios.Size = new System.Drawing.Size(156, 39);
             this.btnRegistrarPrecios.TabIndex = 7;
             this.btnRegistrarPrecios.Text = "Registrar Precios";
             this.btnRegistrarPrecios.UseVisualStyleBackColor = true;
             this.btnRegistrarPrecios.Click += new System.EventHandler(this.btnRegistrarPrecios_Click);
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancelar.Location = new System.Drawing.Point(191, 243);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(156, 39);
+            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // FormCargaDePrecios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 354);
+            this.ClientSize = new System.Drawing.Size(376, 312);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnRegistrarPrecios);
             this.Controls.Add(this.txtPrecioTintura);
             this.Controls.Add(this.txtPrecioPlanchado);
@@ -150,5 +164,6 @@ namespace FormulariosTP3
         private System.Windows.Forms.TextBox txtPrecioPlanchado;
         private System.Windows.Forms.TextBox txtPrecioTintura;
         private System.Windows.Forms.Button btnRegistrarPrecios;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
