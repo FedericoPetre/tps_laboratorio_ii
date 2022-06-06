@@ -8,9 +8,9 @@ namespace EntidadesTP3
 {
     public interface IServicio
     {
-        public decimal PrecioServicio { get; }
-        public string TipoServicio { get; }
-        public decimal AtenderCliente(Cliente cliente, int tipoServicio);
-        public string MostrarServicioCompleto();
+        decimal PrecioServicio { get; set; }
+        string TipoServicio { get; set; }
+        decimal AtenderCliente(Cliente cliente, int tipoServicio);
+        string MostrarServicioCompleto();
     }
 }

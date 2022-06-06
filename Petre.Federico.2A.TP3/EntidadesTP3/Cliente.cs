@@ -28,9 +28,9 @@ namespace EntidadesTP3
             get { return this.edad; }
             set
             {
-                if (value < 0)
+                if (value < 0 || value > 120)
                 {
-                    throw new EdadNoValidaException("Error al ingresar la edad, debe ser un número mayor a 0");
+                    throw new EdadNoValidaException("Error al ingresar la edad, debe ser un número mayor a 0 y menor a 120");
                 }
                 else
                 {
@@ -39,10 +39,13 @@ namespace EntidadesTP3
             }
         }
 
+        /// <summary>
+        /// Para asignar o retornar el DNI del cliente
+        /// </summary>
         public int Dni { get { return this.dni; } set { this.dni = value; } }
 
         /// <summary>
-        /// 
+        /// Para asignar o retornar el Teléfono del cliente
         /// </summary>
         /// <exception cref="numeroDeTelefonoNoValidoException">Lanza la excepcion si el número de teléfono ingresado no se encuentra en el rango 1500000000 - 1600000000</exception>
         public int Telefono
@@ -70,7 +73,7 @@ namespace EntidadesTP3
 
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="edad"></param>
@@ -86,6 +89,10 @@ namespace EntidadesTP3
             this.Telefono = telefono;
         }
 
+        /// <summary>
+        /// Para retornar todos los datos del cliente
+        /// </summary>
+        /// <returns></returns>
         private string MostrarCliente()
         {
             return $"Nombre: {this.Nombre}\nEdad: {this.Edad} años \nDNI: {this.Dni} \nTeléfono: {this.Telefono}\n";
@@ -101,7 +108,7 @@ namespace EntidadesTP3
         }
 
         /// <summary>
-        /// Para luego buscar el cliente seleccionado en el comboBox del formPrincipal
+        /// Para retornar los datos del cliente, en el formato mostrado en el ComboBox del Form Principal
         /// </summary>
         /// <returns></returns>
         public string ATexto()

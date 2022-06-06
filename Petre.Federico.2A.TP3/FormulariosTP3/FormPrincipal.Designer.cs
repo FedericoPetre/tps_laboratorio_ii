@@ -46,9 +46,9 @@ namespace FormulariosTP3
             this.groupClientes = new System.Windows.Forms.GroupBox();
             this.groupBoxInfo = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.btnCargarDatosClientes = new System.Windows.Forms.Button();
             this.btnGuardarDatosClientes = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
             this.groupClientes.SuspendLayout();
             this.groupBoxInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -246,12 +246,23 @@ namespace FormulariosTP3
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Zona control";
             // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCerrar.Location = new System.Drawing.Point(15, 65);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(185, 35);
+            this.btnCerrar.TabIndex = 16;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
             // btnCargarDatosClientes
             // 
             this.btnCargarDatosClientes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCargarDatosClientes.Location = new System.Drawing.Point(15, 110);
+            this.btnCargarDatosClientes.Location = new System.Drawing.Point(205, 65);
             this.btnCargarDatosClientes.Name = "btnCargarDatosClientes";
-            this.btnCargarDatosClientes.Size = new System.Drawing.Size(185, 35);
+            this.btnCargarDatosClientes.Size = new System.Drawing.Size(169, 35);
             this.btnCargarDatosClientes.TabIndex = 15;
             this.btnCargarDatosClientes.Text = "Cargar Datos Clientes";
             this.btnCargarDatosClientes.UseVisualStyleBackColor = true;
@@ -260,24 +271,14 @@ namespace FormulariosTP3
             // btnGuardarDatosClientes
             // 
             this.btnGuardarDatosClientes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnGuardarDatosClientes.Location = new System.Drawing.Point(15, 65);
+            this.btnGuardarDatosClientes.Location = new System.Drawing.Point(15, 106);
             this.btnGuardarDatosClientes.Name = "btnGuardarDatosClientes";
-            this.btnGuardarDatosClientes.Size = new System.Drawing.Size(185, 35);
+            this.btnGuardarDatosClientes.Size = new System.Drawing.Size(365, 35);
             this.btnGuardarDatosClientes.TabIndex = 14;
             this.btnGuardarDatosClientes.Text = "Guardar Datos Clientes";
             this.btnGuardarDatosClientes.UseVisualStyleBackColor = true;
+            this.btnGuardarDatosClientes.Visible = false;
             this.btnGuardarDatosClientes.Click += new System.EventHandler(this.btnGuardarDatosClientes_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCerrar.Location = new System.Drawing.Point(206, 65);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(169, 35);
-            this.btnCerrar.TabIndex = 16;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // FormPrincipal
             // 

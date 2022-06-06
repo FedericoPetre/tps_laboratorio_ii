@@ -28,6 +28,10 @@ namespace EntidadesTP3
             this.clientesAtendidos = new List<U>();
         }
 
+        /// <summary>
+        /// Para registrar el cliente en el sistema del negocio. (Agrega el cliente en la lista de no antendidos, si es que no se encuentra en ella).
+        /// </summary>
+        /// <param name="cliente"></param>
         public void RegistrarCliente(T cliente)
         {
             if (this != cliente)
@@ -36,6 +40,10 @@ namespace EntidadesTP3
             }
         }
 
+        /// <summary>
+        /// Da de baja al cliente ingresado como parámetro (Si es que se encuentra en la lista de no atendidos).
+        /// </summary>
+        /// <param name="cliente"></param>
         public void DarDeBajaCliente(T cliente)
         {
             if (this == cliente)
@@ -44,6 +52,10 @@ namespace EntidadesTP3
             }
         }
 
+        /// <summary>
+        /// Muestra la lista de clientes no atendidos del negocio
+        /// </summary>
+        /// <returns></returns>
         public string MostrarClientesNoAtendidos()
         {
             StringBuilder sb = new StringBuilder();
@@ -68,7 +80,7 @@ namespace EntidadesTP3
         }
 
         /// <summary>
-        /// Retorna la ganancia de atender al cliente no atendido correspondiente al indice ingresado (si existiese) y lo coloca en la lista de atendidos
+        /// Retorna la ganancia de atender al cliente correspondiente al indice ingresado (si existiese) y lo coloca en la lista de atendidos
         /// </summary>
         /// <param name="indexClienteAAtender"></param>
         /// <param name="tipoServicio">tipo de servicio a realizar 0-Corte, 1-Planchado, 2-Tintura, 3-CorteYPlanchado, 4-CorteYTintura, 5-PlanchadoYTintura, 6-Todos</param>
@@ -93,7 +105,7 @@ namespace EntidadesTP3
         }
 
         /// <summary>
-        /// Para obtener las ganancias por los clientes atentidos
+        /// Para obtener las ganancias por los clientes atendidos
         /// </summary>
         /// <returns></returns>
         /// <exception cref="PrecioNoEncontradoException"></exception>
@@ -109,6 +121,10 @@ namespace EntidadesTP3
             return precio;
         }
 
+        /// <summary>
+        /// Muestra la lista de todos los servicios realizados en el negocio
+        /// </summary>
+        /// <returns></returns>
         public string MostrarServiciosRealizados()
         {
             int countAtendidos = this.ClientesAtendidos.Count;

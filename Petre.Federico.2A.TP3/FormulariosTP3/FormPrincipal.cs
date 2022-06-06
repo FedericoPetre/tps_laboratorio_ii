@@ -232,6 +232,7 @@ namespace FormulariosTP3
                 {
                     MessageBox.Show("Se han cargado los datos exitosamente", "atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.btnCargarDatosClientes.Visible = false;
+                    this.btnGuardarDatosClientes.Visible = true;
                 }
             }
             catch (Exception)

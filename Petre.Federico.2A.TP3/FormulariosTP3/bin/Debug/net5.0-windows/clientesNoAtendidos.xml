@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCliente xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Cliente>
-    <Nombre>Juan</Nombre>
-    <Edad>11</Edad>
-    <Dni>45121112</Dni>
-    <Telefono>1532323232</Telefono>
+    <Nombre>Laura</Nombre>
+    <Edad>25</Edad>
+    <Dni>42311313</Dni>
+    <Telefono>1567676767</Telefono>
   </Cliente>
   <Cliente>
-    <Nombre>Lucia</Nombre>
-    <Edad>23</Edad>
-    <Dni>42111999</Dni>
-    <Telefono>1542424242</Telefono>
+    <Nombre>Lautaro</Nombre>
+    <Edad>12</Edad>
+    <Dni>45111111</Dni>
+    <Telefono>1589898989</Telefono>
   </Cliente>
   <Cliente>
-    <Nombre>Viviana</Nombre>
-    <Edad>31</Edad>
-    <Dni>40114114</Dni>
-    <Telefono>1534353435</Telefono>
+    <Nombre>Ana</Nombre>
+    <Edad>34</Edad>
+    <Dni>38121212</Dni>
+    <Telefono>1590901290</Telefono>
   </Cliente>
 </ArrayOfCliente>

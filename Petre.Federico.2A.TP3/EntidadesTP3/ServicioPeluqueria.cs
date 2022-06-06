@@ -16,10 +16,13 @@ namespace EntidadesTP3
         private static decimal precioPlanchado;
         private static decimal precioTintura;
 
+        /// <summary>
+        /// Acá implemento la interfaz IServicio. Para retornar o asignar el tipo de servicio del cliente que se atiende.
+        /// </summary>
         public string TipoServicio { get { return this.tipoDeServicio.ToString(); } set { this.tipoDeServicio = (EServicioPeluqueria) Enum.Parse(typeof(EServicioPeluqueria), value); } }
 
         /// <summary>
-        /// Para retornar el precio por el servicio del cliente actual (instancia)
+        /// Acá implemento la interfaz IServicio. Para retornar el precio por el servicio del cliente actual (instancia)
         /// </summary>
         /// <exception cref="PrecioNoEncontradoException">En caso de que no haya sido cargado el precio del tipo de servicio</exception>
         /// <exception cref="Exception">En caso de ocurrir un error desconocido</exception>
@@ -124,7 +127,7 @@ namespace EntidadesTP3
 
 
         /// <summary>
-        /// Muestra los precios por cada servicio de la peluquería
+        /// Muestra los precios de los servicios de la peluquería
         /// </summary>
         /// <returns></returns>
         /// <exception cref="PrecioNoEncontradoException"></exception>
@@ -157,7 +160,7 @@ namespace EntidadesTP3
         }
 
         /// <summary>
-        /// Retorna toda la información del servicio, incluyendo datos del cliente atendido, el servicio a realizar y el precio
+        /// Acá implemento la interfaz IServicio. Retorna toda la información del servicio, incluyendo datos del cliente atendido, el servicio a realizar y el precio
         /// </summary>
         /// <returns></returns>
         public string MostrarServicioCompleto()
@@ -235,7 +238,7 @@ namespace EntidadesTP3
         }
 
         /// <summary>
-        /// Retorna el precio del servicio por atender al cliente, entrada tipoServicio: 0 -corte, 1-planchado, 2-tintura, 3-corteYplanchado, 4-corteYtintura, 5-planchadoYtintura, 6-todos
+        /// Acá implemento la interfaz IServicio. Retorna el precio del servicio por atender al cliente, entrada tipoServicio: 0 -corte, 1-planchado, 2-tintura, 3-corteYplanchado, 4-corteYtintura, 5-planchadoYtintura, 6-todos
         /// </summary>
         /// <param name="cliente"></param>
         /// <param name="tipoServicio"></param>
@@ -298,7 +301,7 @@ namespace EntidadesTP3
         }
 
         /// <summary>
-        /// 
+        /// Para obtener el precio del tipo de servicio ingresado por parámetro
         /// </summary>
         /// <param name="tipoServicio"></param>
         /// <returns></returns>

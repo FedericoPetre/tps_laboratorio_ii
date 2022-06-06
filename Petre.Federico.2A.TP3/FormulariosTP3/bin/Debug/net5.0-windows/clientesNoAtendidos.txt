@@ -1,21 +1,21 @@
 Listado de clientes esperando a ser atendidos
 *********************************
-Nombre: Juan
-Edad: 11 años 
-DNI: 45121112 
-Teléfono: 1532323232
+Nombre: Laura
+Edad: 25 años 
+DNI: 42311313 
+Teléfono: 1567676767
 
 *********************************
-Nombre: Lucia
-Edad: 23 años 
-DNI: 42111999 
-Teléfono: 1542424242
+Nombre: Lautaro
+Edad: 12 años 
+DNI: 45111111 
+Teléfono: 1589898989
 
 *********************************
-Nombre: Viviana
-Edad: 31 años 
-DNI: 40114114 
-Teléfono: 1534353435
+Nombre: Ana
+Edad: 34 años 
+DNI: 38121212 
+Teléfono: 1590901290
 
 *********************************
 

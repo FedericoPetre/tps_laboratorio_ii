@@ -1,8 +1,8 @@
 **********************************
 *******Datos del Cliente**********
-Nombre: Federico
-Edad: 23 años 
-DNI: 42000000 
+Nombre: Juan
+Edad: 18 años 
+DNI: 44000000 
 Teléfono: 1525252525
 
 Tipo de servicio recibido: Corte
@@ -11,21 +11,21 @@ Precio por el servicio: $500
 
 **********************************
 *******Datos del Cliente**********
-Nombre: Julieta
-Edad: 15 años 
-DNI: 44222222 
-Teléfono: 1512121212
+Nombre: Lucia
+Edad: 23 años 
+DNI: 42111777 
+Teléfono: 1542424242
 
-Tipo de servicio recibido: PlanchadoYTintura
-Precio por el servicio: $3500
+Tipo de servicio recibido: CorteYPlanchado
+Precio por el servicio: $2000
 **********************************
 
 **********************************
 *******Datos del Cliente**********
 Nombre: Gabriel
-Edad: 25 años 
-DNI: 41011111 
-Teléfono: 1515151515
+Edad: 30 años 
+DNI: 39111111 
+Teléfono: 1545454545
 
 Tipo de servicio recibido: Corte
 Precio por el servicio: $500
